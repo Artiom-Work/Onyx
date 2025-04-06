@@ -12,6 +12,15 @@
       background-color: transparent;
       border: none;
       padding: 0;
+
+      @include hover {
+        filter: brightness(80%);
+      }
+
+      @include active {
+        filter: brightness(60%);
+        scale: 0.95;
+      }
     }
   }
 

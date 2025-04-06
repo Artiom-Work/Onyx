@@ -651,7 +651,7 @@ a {
   position: absolute;
   z-index: 3;
   max-width: 1126px;
-  width: 94%;
+  width: 95%;
   height: 77px;
   top: 40px;
   left: 12px;
@@ -694,6 +694,23 @@ a {
   background-color: transparent;
   border: none;
   padding: 0;
+}
+@media (hover: hover) {
+  .chat-message__controls-button:hover {
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+}
+@media (hover: none) {
+  .chat-message__controls-button:active {
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+}
+.chat-message__controls-button:active {
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+  scale: 0.95;
 }
 .chat-message__wrapper {
   display: -webkit-box;
