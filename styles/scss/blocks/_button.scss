@@ -22,14 +22,14 @@
   }
   &--plus {
     &::before {
-      background: url(/images/icons/plus.svg) no-repeat center / cover;
+      background: url(./images/icons/plus.svg) no-repeat center / cover;
     }
   }
 
   &--refresh {
     &::before {
       width: 17px;
-      background: url(/images/icons/refresh.svg) no-repeat center / cover;
+      background: url(./images/icons/refresh.svg) no-repeat center / cover;
     }
   }
   // @include flex-center(true);
