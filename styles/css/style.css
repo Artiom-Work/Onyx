@@ -402,11 +402,11 @@ a {
   content: "";
 }
 .button--plus::before {
-  background: url(./images/icons/plus.svg) no-repeat center/cover;
+  background: url(../../images/icons/plus.svg) no-repeat center/cover;
 }
 .button--refresh::before {
   width: 17px;
-  background: url(./images/icons/refresh.svg) no-repeat center/cover;
+  background: url(../../images/icons/refresh.svg) no-repeat center/cover;
 }
 
 .chat-header {
@@ -595,7 +595,7 @@ a {
   width: 11px;
   height: 13px;
   right: 0;
-  background: url(./images/icons/lock.svg) no-repeat center/cover;
+  background: url(../../images/icons/lock.svg) no-repeat center/cover;
 }
 .chats__slider-buttons-group {
   position: absolute;
