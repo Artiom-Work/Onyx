@@ -5,9 +5,10 @@
   position: relative;
 
   background-color: var(--color-dark);
-  border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   min-height: 236px;
   padding-block: 17px;
+  padding-right: 25px;
   &::before {
     position: absolute;
     content: "";

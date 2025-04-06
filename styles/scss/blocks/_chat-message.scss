@@ -1,0 +1,38 @@
+.chat-message {
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    padding-inline: 17px;
+    gap: 5px;
+    margin-bottom: 6px;
+
+    &-button {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 11px;
+  }
+
+  &__text {
+    @include fluid-text(14, 12);
+    padding: 18.8px 27px;
+    border-radius: 15px;
+    background-color: var(--color-message-bg);
+    border-radius: var(--border-radius-small);
+    box-shadow: -4px 1px 31px 6px rgba(255, 255, 255, 0.15) inset;
+  }
+
+  &:last-child &__text {
+    box-shadow: inset -4px 5px 31px 6px rgba(255, 255, 253, -0.15),
+      inset 0 0 26px rgba(68, 218, 251, 0.4);
+  }
+}
