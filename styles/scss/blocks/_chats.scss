@@ -1,0 +1,125 @@
+.chats {
+  @include flex-space-between;
+  column-gap: 10px;
+  &__button-refresh {
+  }
+
+  &__wrapper {
+  }
+
+  &__list {
+    list-style: none;
+    max-width: 326px;
+  }
+
+  &__item {
+    padding-right: 22.5px;
+    display: flex;
+    align-items: center;
+    &-counter {
+      @include square(25.5px);
+      @include flex-center(true);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 50%;
+      background-color: var(--color-dark-light);
+      margin-right: 10px;
+    }
+
+    &-button {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      background-color: transparent;
+      border: none;
+      color: var(--color-light);
+      font-size: 16px;
+      padding: 0 22.5px 0 0;
+
+      @include hover {
+        &:not([disabled]) {
+          color: var(--color-accent);
+          filter: brightness(80%);
+        }
+      }
+
+      @include active {
+        &:not([disabled]) {
+          filter: brightness(40%);
+          scale: 0.98;
+        }
+      }
+      &--lock {
+        color: var(--color-gray-alt);
+
+        &::before {
+          position: absolute;
+          content: "";
+          width: 11px;
+          height: 13px;
+          right: 0;
+          background: url(/images/icons/lock.svg) no-repeat center / cover;
+        }
+      }
+    }
+
+    &-name {
+    }
+  }
+
+  &__slider-buttons-group {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 30px;
+    width: 100%;
+    height: 10px;
+    @include flex-space-between;
+    margin-right: 28px;
+    gap: 10px;
+  }
+  &__slider-button {
+    background-color: transparent;
+    border: none;
+    height: 10px !important;
+    width: 10px !important;
+    color: var(--color-gray-alt);
+    position: static !important;
+    left: unset !important;
+    bottom: unset !important;
+    top: unset !important;
+    right: unset !important;
+
+    @include hover {
+      filter: brightness(60%);
+    }
+    @include active {
+      scale: 0.98;
+    }
+    &::after,
+    &::before {
+      display: none;
+    }
+
+    &--next,
+    &--prev {
+    }
+    &--prev {
+    }
+    &--next {
+    }
+  }
+  &__button {
+    width: 45px;
+    position: relative;
+    z-index: 2;
+
+    &::before {
+      width: 24px;
+    }
+  }
+}
+.swiper-button-prev {
+}
+.swiper-button-next {
+}

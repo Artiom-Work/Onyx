@@ -1,0 +1,22 @@
+// connecting general scss files
+@import "./base/_normolize.scss";
+@import "./base/_fonts.scss";
+@import "./base/_mixins.scss";
+@import "./base/_media.scss";
+@import "./base/_variables.scss";
+@import "./base/_utils.scss";
+@import "./base/_globals.scss";
+//blocks
+@import "./blocks/_logo.scss";
+@import "./blocks/_decor-stars.scss";
+@import "./blocks/_button.scss";
+@import "./blocks/_header.scss";
+@import "./blocks/_chat-header.scss";
+@import "./blocks/_chat-info.scss";
+@import "./blocks/_chats.scss";
+// @import "./blocks/_cross-button.scss";
+// @import "./blocks/_section.scss";
+// @import "./blocks/_soc1als.scss";
+@import "./blocks/_footer.scss";
+//==========
+@import "_test.scss";

@@ -1,0 +1,28 @@
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.hidden-mobile {
+  @include mobile-media {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @include mobile-media-above {
+    display: none !important;
+  }
+}
+// .lock-body {
+//   overflow: hidden;
+// }
+// .hide-layer {
+//   position: relative;
+//   z-index: -1;
+// }

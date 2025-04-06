@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" type="image/x-icon" href="/images/icons/favicon.svg">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-favicon.png">
+	<!-- <meta name="description"
+		content="Add your page description ..."> -->
+	<link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
+	<title>Onyx</title>
+	<link rel="stylesheet" href="styles/css/style.css">
+</head>
+
+<body>
+
+
+	<header class="header container">
+		<div class="logo">
+			<a class="logo__link" href="index.html" aria-label="logotupe link">
+				<img class="logo__image" src="/images/logo/logo-image.png" width="192.5" height="191.5" alt="Logotupe"
+					loading="lazy">
+				<span class="logo__text logo__text--title">onyx</span>
+				<span class="logo__text">ask Marilyn</span>
+			</a>
+		</div>
+	</header>
+
+	<main>
+		<h1 class="visually-hidden">Onyx</h1>
+
+		<div class="chat-header container">
+			<h2 class="visually-hidden">Onyx info</h2>
+
+			<section class="chat-header__info chat-info ">
+				<h3 class="chat-info__title">ONYXbot</h3>
+
+				<div class="chat-info__balance">
+					<div class="chat-info__balance-decor-stars decor-stars"></div>
+					<span>695</span>
+					<button class="chat-info__balance-button button button--plus button--round" type="button"
+						title="Кнопка поплнения баланса">
+						<span class="visually-hidden">Кнопка поплнения баланса</span>
+					</button>
+				</div>
+
+				<a class="chat-info__link" href="https://infocigane@bot.net" target="_blank">
+					<span>infocigane@bot.net</span>
+					<svg viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
+						<use xlink:href="/images/icons/sprite-icons.svg#door"></use>
+					</svg>
+				</a>
+			</section>
+
+			<div class="chat-header__chats chats">
+				<button class="chats__button button button--refresh button--round" type="button" title="Кнопка повтора ответа">
+					<span class="visually-hidden">Кнопка повтора ответа</span>
+				</button>
+
+				<div class="chats__wrapper swiper">
+					<ul class="chats__list swiper-wrapper">
+						<li class="chats__item swiper-slide">
+							<span class="chats__item-counter">1</span>
+							<button class="chats__item-button" type="button">
+								<span class="chats__item-name">The platform does&nbsp;...</span>
+							</button>
+						</li>
+						<li class="chats__item swiper-slide">
+							<span class="chats__item-counter">2</span>
+							<button class="chats__item-button" type="button">
+								<span class="chats__item-name">Создать HTML сайт ...</span>
+							</button>
+						</li>
+						<li class="chats__item swiper-slide">
+							<span class="chats__item-counter">2</span>
+							<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+								<span class="chats__item-name">Новый чат</span>
+							</button>
+						</li>
+						<li class="chats__item swiper-slide">
+							<span class="chats__item-counter">2</span>
+							<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+								<span class="chats__item-name">Новый чат</span>
+							</button>
+						</li>
+						</l>
+
+
+				</div>
+
+				<div class="chats__slider-buttons-group">
+					<button class="chats__slider-button chats__slider-button--prev swiper-button-prev"
+						title="Просмотреть предидущие чаты">
+						<span class="visually-hidden">Кнопка переключения слайдера</span>
+						<span>&#9664;</span>
+					</button>
+					<button class="chats__slider-button chats__slider-button--next swiper-button-next"
+						title="Просмотреть следующие чаты">
+						<span class="visually-hidden">Кнопка переключения слайдера</span>
+						<span>&#9654;</span>
+					</button>
+				</div>
+
+				<button class="chats__button button button--plus button--round" type="button"
+					title="Кнопка создания новога чата">
+					<span class="visually-hidden">Кнопка создания новога чата</span>
+				</button>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer">
+	</footer>
+
+
+
+	<script src="libs/swiper/swiper-bundle.min.js"></script>
+	<script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

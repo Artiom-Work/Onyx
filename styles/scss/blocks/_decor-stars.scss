@@ -1,0 +1,22 @@
+.decor-stars {
+  position: relative;
+  width: 25px;
+  height: 29px;
+  &::after,
+  &::before {
+    position: absolute;
+    content: "✦";
+    width: auto;
+    height: auto;
+  }
+  &::after {
+    left: -2px;
+    bottom: -8px;
+    font-size: 26px;
+  }
+  &::before {
+    right: -1px;
+    top: -5px;
+    font-size: 17px;
+  }
+}
