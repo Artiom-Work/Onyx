@@ -1,19 +1,26 @@
 .chats {
   @include flex-space-between;
   column-gap: 10px;
-  &__button-refresh {
-  }
+  max-width: 428px;
+  width: 100%;
+  padding-right: 4px;
 
   &__wrapper {
+    padding-bottom: 8px;
+    margin-left: 0;
   }
 
-  &__list {
-    list-style: none;
-    max-width: 326px;
+  &__slide {
+    display: flex;
+    gap: 7px;
+    &-left,
+    &-right {
+      & .chats__item:first-child {
+        margin-bottom: 8px;
+      }
+    }
   }
-
   &__item {
-    padding-right: 22.5px;
     display: flex;
     align-items: center;
     &-counter {
@@ -22,8 +29,7 @@
       font-weight: 700;
       font-size: 14px;
       border-radius: 50%;
-      background-color: var(--color-dark-light);
-      margin-right: 10px;
+      background-color: var(--color-gray-light);
     }
 
     &-button {
@@ -32,10 +38,11 @@
       position: relative;
       background-color: transparent;
       border: none;
-      color: var(--color-light);
-      font-size: 16px;
-      padding: 0 22.5px 0 0;
+      color: var(--color-text-light);
 
+      &[disabled] {
+        padding-right: 22px;
+      }
       @include hover {
         &:not([disabled]) {
           color: var(--color-accent);
@@ -62,9 +69,6 @@
         }
       }
     }
-
-    &-name {
-    }
   }
 
   &__slider-buttons-group {
@@ -75,7 +79,7 @@
     width: 100%;
     height: 10px;
     @include flex-space-between;
-    margin-right: 28px;
+    margin-right: 23px;
     gap: 10px;
   }
   &__slider-button {
@@ -100,26 +104,16 @@
     &::before {
       display: none;
     }
-
-    &--next,
-    &--prev {
-    }
-    &--prev {
-    }
-    &--next {
-    }
   }
   &__button {
-    width: 45px;
+    width: 32px;
+    flex-shrink: 0;
     position: relative;
     z-index: 2;
+    top: -2px;
 
-    &::before {
-      width: 24px;
+    &--plus {
+      width: 26px;
     }
   }
-}
-.swiper-button-prev {
-}
-.swiper-button-next {
 }

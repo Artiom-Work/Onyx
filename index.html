@@ -18,97 +18,225 @@
 
 
 	<header class="header container">
-		<div class="logo">
-			<a class="logo__link" href="index.html" aria-label="logotupe link">
-				<img class="logo__image" src="./images/logo/logo-image.png" width="192.5" height="191.5" alt="Logotupe"
-					loading="lazy">
-				<span class="logo__text logo__text--title">onyx</span>
-				<span class="logo__text">ask Marilyn</span>
+		<nav class="header__info chat-info">
+			<div class="chat-info__logo logo">
+				<a class="logo__link" href="index.html">ONYXbot</a>
+			</div>
+
+			<div class="chat-info__balance">
+				<div class="chat-info__balance-decor-stars decor-stars"></div>
+				<span>695</span>
+				<a class="chat-info__balance-button button button--plus button--round" target="_blank" href="!#"
+					title="Кнопка поплнения баланса">
+					<span class="visually-hidden">Кнопка поплнения баланса</span>
+				</a>
+			</div>
+
+			<a class="chat-info__link" href="https://infocigane@bot.net" target="_blank">
+				<span>infocigane@bot.net</span>
+				<svg viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
+					<use xlink:href="./images/icons/sprite-icons.svg#door"></use>
+				</svg>
 			</a>
+		</nav>
+
+		<div class="main-image">
+			<img class="main-image__img" src="./images/main-image.webp" width="203" height="229" alt="Изображение волшебника"
+				loading="lazy">
+
+			<span class="main-image__text">ask Marilyn</span>
+		</div>
+
+		<div class="header__chats chats">
+			<button class="chats__button button button--refresh button--round" type="button" title="Кнопка повторения ответа">
+				<span class="visually-hidden">Кнопка повтора ответа</span>
+			</button>
+
+			<div class="chats__wrapper swiper">
+				<ul class="chats__list swiper-wrapper">
+					<li class="chats__slide swiper-slide">
+						<div class="chats__slide-left">
+							<div class="chats__item">
+								<span class="chats__item-counter">1</span>
+								<button class="chats__item-button" type="button">
+									<span>The platform does&nbsp;...</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">2</span>
+								<button class="chats__item-button" type="button">
+									<span>Создать HTML сайт ...</span>
+								</button>
+							</div>
+						</div>
+
+						<div>
+							<div class="chats__item">
+								<span class="chats__item-counter">3</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">4</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+					</li>
+
+					<li class="chats__slide swiper-slide">
+						<div class="chats__slide-left">
+							<div class="chats__item">
+								<span class="chats__item-counter">5</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">6</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+
+						<div>
+							<div class="chats__item">
+								<span class="chats__item-counter">7</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">8</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+					</li>
+
+					<li class="chats__slide swiper-slide">
+						<div class="chats__slide-left">
+							<div class="chats__item">
+								<span class="chats__item-counter">9</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">10</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+
+						<div>
+							<div class="chats__item">
+								<span class="chats__item-counter">11</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">12</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+					</li>
+
+					<li class="chats__slide swiper-slide">
+						<div class="chats__slide-left">
+							<div class="chats__item">
+								<span class="chats__item-counter">13</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">14</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+
+						<div>
+							<div class="chats__item">
+								<span class="chats__item-counter">15</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+
+							<div class="chats__item">
+								<span class="chats__item-counter">16</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+
+			</div>
+
+			<div class="chats__slider-buttons-group">
+				<button class="chats__slider-button chats__slider-button--prev swiper-button-prev"
+					title="Просмотреть предидущие чаты">
+					<span class="visually-hidden">Кнопка переключения слайдера</span>
+					<span>&#9664;</span>
+				</button>
+				<button class="chats__slider-button chats__slider-button--next swiper-button-next"
+					title="Просмотреть следующие чаты">
+					<span class="visually-hidden">Кнопка переключения слайдера</span>
+					<span>&#9654;</span>
+				</button>
+			</div>
+
+			<button class="chats__button chats__button--plus button button--plus button--round" type="button"
+				title="Кнопка создания новога чата">
+				<span class="visually-hidden">Кнопка создания новога чата</span>
+			</button>
 		</div>
 	</header>
 
 	<main>
-		<h1 class="visually-hidden">Onyx</h1>
+		<h1 class="visually-hidden">ONYXbot</h1>
 
 		<div class="chat-header container">
-			<h2 class="visually-hidden">Onyx info</h2>
-
-			<section class="chat-header__info chat-info ">
-				<h3 class="chat-info__title">ONYXbot</h3>
-
-				<div class="chat-info__balance">
-					<div class="chat-info__balance-decor-stars decor-stars"></div>
-					<span>695</span>
-					<button class="chat-info__balance-button button button--plus button--round" type="button"
-						title="Кнопка поплнения баланса">
-						<span class="visually-hidden">Кнопка поплнения баланса</span>
-					</button>
-				</div>
-
-				<a class="chat-info__link" href="https://infocigane@bot.net" target="_blank">
-					<span>infocigane@bot.net</span>
-					<svg viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
-						<use xlink:href="./images/icons/sprite-icons.svg#door"></use>
-					</svg>
-				</a>
-			</section>
-
-			<div class="chat-header__chats chats">
-				<button class="chats__button button button--refresh button--round" type="button" title="Кнопка повтора ответа">
-					<span class="visually-hidden">Кнопка повтора ответа</span>
-				</button>
-
-				<div class="chats__wrapper swiper">
-					<ul class="chats__list swiper-wrapper">
-						<li class="chats__item swiper-slide">
-							<span class="chats__item-counter">1</span>
-							<button class="chats__item-button" type="button">
-								<span class="chats__item-name">The platform does&nbsp;...</span>
-							</button>
-						</li>
-						<li class="chats__item swiper-slide">
-							<span class="chats__item-counter">2</span>
-							<button class="chats__item-button" type="button">
-								<span class="chats__item-name">Создать HTML сайт ...</span>
-							</button>
-						</li>
-						<li class="chats__item swiper-slide">
-							<span class="chats__item-counter">2</span>
-							<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-								<span class="chats__item-name">Новый чат</span>
-							</button>
-						</li>
-						<li class="chats__item swiper-slide">
-							<span class="chats__item-counter">2</span>
-							<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-								<span class="chats__item-name">Новый чат</span>
-							</button>
-						</li>
-						</l>
 
 
-				</div>
 
-				<div class="chats__slider-buttons-group">
-					<button class="chats__slider-button chats__slider-button--prev swiper-button-prev"
-						title="Просмотреть предидущие чаты">
-						<span class="visually-hidden">Кнопка переключения слайдера</span>
-						<span>&#9664;</span>
-					</button>
-					<button class="chats__slider-button chats__slider-button--next swiper-button-next"
-						title="Просмотреть следующие чаты">
-						<span class="visually-hidden">Кнопка переключения слайдера</span>
-						<span>&#9654;</span>
-					</button>
-				</div>
 
-				<button class="chats__button button button--plus button--round" type="button"
-					title="Кнопка создания новога чата">
-					<span class="visually-hidden">Кнопка создания новога чата</span>
-				</button>
-			</div>
 		</div>
+
+		<!-- <div class="chat-body container">
+			<div class="chat-body__shadow-block"></div>
+			<div class="chat-body__inner">
+				<ul class="chat-body__message-list">
+					<li class="chat-body__message-item chat-message">
+						<img class="chat-message__image" src="/images/icons/user-icon" alt="" width="200" height="200"
+							loading="lazy">
+					</li>
+				</ul>
+			</div>
+
+
+		</div> -->
 	</main>
 
 	<footer class="footer">

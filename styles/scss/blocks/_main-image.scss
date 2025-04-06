@@ -1,0 +1,53 @@
+.main-image {
+  @include square(295px);
+  @include flex-center();
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+
+  flex-direction: column;
+  z-index: 1;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: linear-gradient(
+    0deg,
+    rgb(71, 71, 71) 0%,
+    rgba(32, 32, 32, 1) 100%
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -3px;
+    left: 1px;
+    width: calc(100% - 2px);
+    height: 100%;
+    background-color: var(--color-dark);
+    border-radius: inherit;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 79%;
+    height: 20%;
+    bottom: 0px;
+    background-color: var(--color-dark);
+  }
+
+  &__img {
+    position: relative;
+    z-index: 2;
+    top: -10px;
+    user-select: none;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
+    top: -15px;
+  }
+}

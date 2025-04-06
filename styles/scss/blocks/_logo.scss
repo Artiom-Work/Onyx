@@ -1,82 +1,14 @@
 .logo {
-  @include square(var(--header-height));
-  @include flex-center();
-
-  position: relative;
-  z-index: 1;
-  margin-inline: auto;
-  padding-left: 10px;
-  border-radius: 50%;
-  outline: 1px solid var(--color-gray-alt);
-  background: linear-gradient(
-    0deg,
-    rgb(71, 71, 71) 0%,
-    rgba(32, 32, 32, 1) 50%
-  );
-  user-select: none;
-
   @include hover {
     color: var(--color-accent);
-    & .logo__image {
-      filter: brightness(60%);
-    }
+    filter: brightness(80%);
   }
-
   @include active {
+    scale: 0.98;
     transition-duration: var(--transition-duration);
-    scale: 0.95;
   }
-  &::before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: -5px;
-    left: -0.5px;
-    width: calc(100% + 1px);
-    height: 100%;
-    background-color: var(--color-dark);
-    border-radius: inherit;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 82%;
-    height: 20%;
-    bottom: -3px;
-    background-color: var(--color-dark);
-  }
-
   &__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 201px;
-    height: 238px;
-  }
-  &__image {
-    position: relative;
-    z-index: 2;
-    transition-duration: var(--transition-duration);
-    margin-bottom: -35px;
-    margin-top: -10px;
-  }
-  &__text {
-    position: relative;
-    z-index: 2;
-    font-size: 15px;
-    padding-right: 12px;
-    &:not(:last-child) {
-      margin-bottom: 7px;
-    }
-    &:not(.logo__text--title) {
-      letter-spacing: -0.6px;
-    }
-    &--title {
-      padding-right: 20px;
-      font-family: var(--font-family-logo);
-      font-weight: 700;
-      font-size: 46px;
-    }
+    @include fluid-text(29, 24);
+    font-weight: 400;
   }
 }

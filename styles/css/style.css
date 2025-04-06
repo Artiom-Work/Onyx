@@ -118,36 +118,15 @@ svg * {
   }
 }
 @font-face {
-  font-family: "Arial";
-  src: url("/fonts/Arial.woff2") format("woff2");
+  font-family: "AvenirNext";
+  src: url("/fonts/AvenirNextCyr-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Tahoma";
-  src: url("/fonts/tahoma.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Aligarh";
-  src: url("/fonts/Aligarh-Medium.woff2") format("woff2");
+  font-family: "AcuminPro-Regular";
+  src: url("/fonts/AcuminPro-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -156,17 +135,18 @@ svg * {
   --color-dark: #000000;
   --color-dark-light: #2a2929;
   --color-light: #ffffff;
+  --color-text-light: rgba(255, 255, 255, 0.8);
   --color-gray: #202020;
+  --color-gray-light: #78787880;
   --color-gray-alt: #787878;
   --color-accent: #44dafb;
   --border: 1px solid var(--color-dark);
   --border-radius: 25px;
   --border-radius-small: 15px;
-  --font-family-base: "Inter", sans-serif;
-  --font-family-logo: "Aligarh", sans-serif;
-  --container-width: 1130px;
+  --font-family-base: "AvenirNext", sans-serif;
+  --font-family-reserve: "AcuminPro-Regular", sans-serif;
+  --container-width: 1120px;
   --container-padding-x: 20px;
-  --header-height: 295px;
   --transition-duration: 0.3s;
 }
 @media (max-width: 767px) {
@@ -208,7 +188,7 @@ svg * {
 }
 
 body {
-  font-size: clamp(12px, 1.4876033058vw, 18px);
+  font-size: clamp(12px, 1.2396694215vw, 15px);
   font-family: var(--font-family-base);
   font-weight: 400;
   line-height: 1.28;
@@ -230,8 +210,8 @@ a {
   color: inherit;
 }
 
-.logo {
-  width: var(--header-height);
+.main-image {
+  width: 295px;
   aspect-ratio: 1;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -242,101 +222,77 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   z-index: 1;
   margin-inline: auto;
-  padding-left: 10px;
   border-radius: 50%;
-  outline: 1px solid var(--color-gray-alt);
-  background: -webkit-gradient(linear, left bottom, left top, from(rgb(71, 71, 71)), color-stop(50%, rgb(32, 32, 32)));
-  background: linear-gradient(0deg, rgb(71, 71, 71) 0%, rgb(32, 32, 32) 50%);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgb(71, 71, 71)), to(rgb(32, 32, 32)));
+  background: linear-gradient(0deg, rgb(71, 71, 71) 0%, rgb(32, 32, 32) 100%);
+}
+.main-image::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -3px;
+  left: 1px;
+  width: calc(100% - 2px);
+  height: 100%;
+  background-color: var(--color-dark);
+  border-radius: inherit;
+}
+.main-image::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 79%;
+  height: 20%;
+  bottom: 0px;
+  background-color: var(--color-dark);
+}
+.main-image__img {
+  position: relative;
+  z-index: 2;
+  top: -10px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
+.main-image__text {
+  position: relative;
+  z-index: 2;
+  top: -15px;
+}
+
 @media (hover: hover) {
   .logo:hover {
     color: var(--color-accent);
-  }
-  .logo:hover .logo__image {
-    -webkit-filter: brightness(60%);
-            filter: brightness(60%);
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
   }
 }
 @media (hover: none) {
   .logo:active {
     color: var(--color-accent);
-  }
-  .logo:active .logo__image {
-    -webkit-filter: brightness(60%);
-            filter: brightness(60%);
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
   }
 }
 .logo:active {
+  scale: 0.98;
   -webkit-transition-duration: var(--transition-duration);
           transition-duration: var(--transition-duration);
-  scale: 0.95;
-}
-.logo::before {
-  content: "";
-  position: absolute;
-  display: block;
-  top: -5px;
-  left: -0.5px;
-  width: calc(100% + 1px);
-  height: 100%;
-  background-color: var(--color-dark);
-  border-radius: inherit;
-}
-.logo::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 82%;
-  height: 20%;
-  bottom: -3px;
-  background-color: var(--color-dark);
 }
 .logo__link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 201px;
-  height: 238px;
-}
-.logo__image {
-  position: relative;
-  z-index: 2;
-  -webkit-transition-duration: var(--transition-duration);
-          transition-duration: var(--transition-duration);
-  margin-bottom: -35px;
-  margin-top: -10px;
-}
-.logo__text {
-  position: relative;
-  z-index: 2;
-  font-size: 15px;
-  padding-right: 12px;
-}
-.logo__text:not(:last-child) {
-  margin-bottom: 7px;
-}
-.logo__text:not(.logo__text--title) {
-  letter-spacing: -0.6px;
-}
-.logo__text--title {
-  padding-right: 20px;
-  font-family: var(--font-family-logo);
-  font-weight: 700;
-  font-size: 46px;
+  font-size: clamp(24px, 2.3966942149vw, 29px);
+  font-weight: 400;
 }
 
 .decor-stars {
@@ -392,7 +348,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: var(--color-dark-light);
+  background-color: var(--color-gray-light);
   border-radius: 50%;
 }
 .button--round::before {
@@ -405,38 +361,42 @@ a {
   background: url(../../images/icons/plus.svg) no-repeat center/cover;
 }
 .button--refresh::before {
-  width: 17px;
+  width: 18px;
   background: url(../../images/icons/refresh.svg) no-repeat center/cover;
 }
 
-.chat-header {
-  border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
-  position: relative;
-  margin-block: calc(var(--header-height) * -1 * 0.57) 0;
-  background-color: var(--color-dark);
+.header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  position: relative;
+  background-color: var(--color-dark);
+  border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+  min-height: 236px;
+  padding-block: 17px;
 }
-.chat-header::before {
+.header::before {
   position: absolute;
   content: "";
-  width: calc(100% + 4px);
+  width: calc(100% + 3px);
   height: 100%;
-  left: -2px;
-  top: 2px;
+  left: -1.5px;
+  top: 1px;
   z-index: -1;
   border-radius: inherit;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgb(71, 71, 71)), color-stop(50%, rgb(32, 32, 32)));
-  background: linear-gradient(0deg, rgb(71, 71, 71) 0%, rgb(32, 32, 32) 50%);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgb(71, 71, 71)), color-stop(50%, rgba(32, 32, 32, 0.1)));
+  background: linear-gradient(0deg, rgb(71, 71, 71) 0%, rgba(32, 32, 32, 0.1) 50%);
 }
+
 .chat-info {
+  position: relative;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -445,14 +405,13 @@ a {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 19px 15px;
+  gap: 15px 22px;
   max-width: 308px;
   width: 100%;
-  padding: 20px 0;
-  font-weight: 700;
 }
 .chat-info__title {
   font-size: clamp(16px, 2.3140495868vw, 28px);
+  font-weight: 400;
 }
 .chat-info__balance {
   position: relative;
@@ -481,7 +440,8 @@ a {
   background-color: var(--color-dark);
 }
 .chat-info__link {
-  font-size: clamp(11px, 1.0743801653vw, 13px);
+  font-size: clamp(11px, 1.2396694215vw, 15px);
+  font-family: var(--font-family-reserve);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -521,13 +481,24 @@ a {
   -webkit-column-gap: 10px;
      -moz-column-gap: 10px;
           column-gap: 10px;
+  max-width: 428px;
+  width: 100%;
+  padding-right: 4px;
 }
-.chats__list {
-  list-style: none;
-  max-width: 326px;
+.chats__wrapper {
+  padding-bottom: 8px;
+  margin-left: 0;
+}
+.chats__slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 7px;
+}
+.chats__slide-left .chats__item:first-child, .chats__slide-right .chats__item:first-child {
+  margin-bottom: 8px;
 }
 .chats__item {
-  padding-right: 22.5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -550,8 +521,7 @@ a {
   font-weight: 700;
   font-size: 14px;
   border-radius: 50%;
-  background-color: var(--color-dark-light);
-  margin-right: 10px;
+  background-color: var(--color-gray-light);
 }
 .chats__item-button {
   display: -webkit-inline-box;
@@ -563,9 +533,10 @@ a {
   position: relative;
   background-color: transparent;
   border: none;
-  color: var(--color-light);
-  font-size: 16px;
-  padding: 0 22.5px 0 0;
+  color: var(--color-text-light);
+}
+.chats__item-button[disabled] {
+  padding-right: 22px;
 }
 @media (hover: hover) {
   .chats__item-button:hover:not([disabled]) {
@@ -613,7 +584,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-right: 28px;
+  margin-right: 23px;
   gap: 10px;
 }
 .chats__slider-button {
@@ -647,12 +618,15 @@ a {
   display: none;
 }
 .chats__button {
-  width: 45px;
+  width: 32px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   position: relative;
   z-index: 2;
+  top: -2px;
 }
-.chats__button::before {
-  width: 24px;
+.chats__button--plus {
+  width: 26px;
 }
 
 .hello-1 {

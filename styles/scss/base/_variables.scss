@@ -2,7 +2,9 @@
   --color-dark: #000000;
   --color-dark-light: #2a2929;
   --color-light: #ffffff;
+  --color-text-light: rgba(255, 255, 255, 0.8);
   --color-gray: #202020;
+  --color-gray-light: #78787880;
   --color-gray-alt: #787878;
   --color-accent: #44dafb;
 
@@ -16,12 +18,11 @@
 
   // --shadow: 0 5px 0 0 var(--color-dark);
 
-  --font-family-base: "Inter", sans-serif;
-  --font-family-logo: "Aligarh", sans-serif;
+  --font-family-base: "AvenirNext", sans-serif;
+  --font-family-reserve: "AcuminPro-Regular", sans-serif;
 
-  --container-width: 1130px;
+  --container-width: 1120px;
   --container-padding-x: 20px;
-  --header-height: 295px;
 
   // --container-padding-y: 70px;
 

@@ -1,2 +1,26 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  position: relative;
+
+  background-color: var(--color-dark);
+  border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+  min-height: 236px;
+  padding-block: 17px;
+  &::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 3px);
+    height: 100%;
+    left: -1.5px;
+    top: 1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(
+      0deg,
+      rgb(71, 71, 71) 0%,
+      rgba(32, 32, 32, 0.1) 50%
+    );
+  }
 }

@@ -7,6 +7,7 @@ const swiper = new Swiper('.swiper', {
 	slidesPerView: "auto",
 	centeredSlides: true,
 	loop: true,
+	grabCursor: true,
 
 	navigation: {
 		nextEl: '.swiper-button-next',

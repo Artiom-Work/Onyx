@@ -11,7 +11,7 @@
   &--round {
     @include square(30px);
     @include flex-center(true);
-    background-color: var(--color-dark-light);
+    background-color: var(--color-gray-light);
     border-radius: 50%;
 
     &::before {
@@ -28,7 +28,7 @@
 
   &--refresh {
     &::before {
-      width: 17px;
+      width: 18px;
       background: url(../../images/icons/refresh.svg) no-repeat center / cover;
     }
   }

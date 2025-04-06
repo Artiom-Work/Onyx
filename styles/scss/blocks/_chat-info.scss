@@ -1,15 +1,15 @@
 .chat-info {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 19px 15px;
-
+  gap: 15px 22px;
   max-width: 308px;
   width: 100%;
-  padding: 20px 0;
-  font-weight: 700;
   &__title {
     @include fluid-text(28, 16);
+    font-weight: 400;
   }
 
   &__balance {
@@ -37,7 +37,9 @@
   }
 
   &__link {
-    @include fluid-text(13, 11);
+    @include fluid-text(15, 11);
+
+    font-family: var(--font-family-reserve);
     display: flex;
     align-items: center;
     gap: 10px;
