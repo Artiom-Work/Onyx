@@ -1,6 +1,6 @@
 .chat-body {
   position: relative;
-  margin-block: -20px 0;
+  margin-block: var(--container-margin-y) 0;
   height: 551px;
   padding-right: 0;
 

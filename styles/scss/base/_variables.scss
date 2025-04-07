@@ -1,11 +1,12 @@
 :root {
   --color-dark: #000000;
   --color-dark-light: #2a2929;
+  --text-footer: #ffffff45;
   --color-message-bg: #141414;
   --color-light: #ffffff;
   --color-text-light: rgba(255, 255, 255, 0.8);
   --color-gray: #202020;
-  --color-gray-light: #78787880;
+  --color-gray-light: #787878b3;
   --color-gray-alt: #787878;
   --color-accent: #44dafb;
 
@@ -15,12 +16,14 @@
 
   --font-family-base: "AvenirNext", sans-serif;
   --font-family-reserve: "AcuminPro-Regular", sans-serif;
+  --font-family-footer: "tahoma", sans-serif;
 
   --container-width: 1130px;
   --container-padding-x: 20px;
+  --container-margin-y: -20px;
 
   // --input-height: 59px;
-  // --button-height: 68px;
+  --button-height: 33px;
 
   --transition-duration: 0.3s;
 

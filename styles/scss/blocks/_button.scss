@@ -8,6 +8,32 @@
   @include active {
     scale: 0.95;
   }
+
+  &--transparent {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding-block: 0 9px;
+    padding-inline: 17px;
+    color: var(--color-light);
+    height: var(--button-height);
+    background-color: var(--color-dark);
+    outline: 2px solid var(--color-gray-alt);
+    border-radius: var(--border-radius-small);
+    font-size: 13px;
+
+    box-shadow: 0px 0px 8px 2px rgba(255, 255, 255, 0.45) inset;
+
+    @include hover {
+      color: var(--color-accent);
+      filter: brightness(80%);
+    }
+    @include active {
+      filter: brightness(60%);
+      scale: 0.98;
+    }
+  }
+
   &--round {
     @include square(30px);
     @include flex-center(true);
@@ -32,13 +58,9 @@
       background: url(../../images/icons/refresh.svg) no-repeat center / cover;
     }
   }
-  // @include flex-center(true);
 
-  // height: var(--button-height);
-  // padding-inline: 35px;
   // font-size: 20px;
   // color: var(--color-light);
-  // background-color: var(--color-dark);
   // border: var(--border);
   // border-radius: var(--border-radius);
 

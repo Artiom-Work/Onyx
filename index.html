@@ -10,14 +10,12 @@
 	<!-- <meta name="description"
 		content="Add your page description ..."> -->
 	<link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
-	<link rel="stylesheet" href="libs/jquery/scrollbar/simple-scrollbar.css">
+	<!-- <link rel="stylesheet" href="libs/jquery/scrollbar/simple-scrollbar.css"> -->
 	<title>Onyx</title>
 	<link rel="stylesheet" href="styles/css/style.css">
 </head>
 
 <body>
-
-
 	<header class="header container">
 		<nav class="header__info chat-info">
 			<div class="chat-info__logo logo">
@@ -217,7 +215,6 @@
 
 	<main>
 		<h1 class="visually-hidden">ONYXbot</h1>
-
 
 		<div class="chat-body container">
 			<div class="chat-body__shadow-block"></div>
@@ -458,15 +455,60 @@
 				</ul>
 			</div>
 		</div>
+
+		<div class="user-field container">
+			<form class="user-field__form" id="user-field">
+				<div class="user-field__message">
+					<label class="visually-hidden" for="message">Вопрос пользователя</label>
+					<textarea class="user-field__message-input" id="message" name="message" placeholder="Введите текст" required
+						aria-label="Поле ввода вопроса пользователя"></textarea>
+				</div>
+
+				<div class="user-field__controls">
+					<div class="user-field__image-upload">
+						<input class="visually-hidden" type="file" id="image-upload" accept="image/*"
+							aria-label="Поле для загрузки изображения">
+						<label for="image-upload" class="user-field__image-upload-label " title="Загрузить изображение">
+							<svg class="user-field__image-upload-icon" viewBox="0 0 24 24" width="40" height="30">
+								<use xlink:href="./images/icons/sprite-icons.svg#image-add"></use>
+							</svg>
+							<span class="visually-hidden">Загрузить изображение</span>
+						</label>
+					</div>
+
+					<button class="user-field__button user-field__button--padding button button--transparent" type="submit"
+						title="Задать вопрос с помощью расширенного поиска"
+						aria-label="Задать вопрос с помощью расширенного поиска">
+						<span class="decor-triangle"></span>
+						<span class="user-field__button-text user-field__button-text--big-margin">DeepSeek&nbsp;(R1)</span>
+						<span class="decor-stars"></span>
+						<span>5</span>
+					</button>
+
+					<button class="user-field__button user-field__button--send button button--transparent" type="submit"
+						aria-label="Задать вопрос">
+						<span class="user-field__button-text">Отправить</span>
+						<span class="decor-stars"></span>
+						<span>5</span>
+					</button>
+				</div>
+			</form>
+		</div>
 	</main>
 
-	<footer class="footer">
+
+	<footer class="footer container">
+		<div class="footer__text">
+			<p>
+				The platform does not guarantee that the informational object created by&nbsp;artificial intelligence will
+				correspond to&nbsp;reality be&nbsp;legally <br> accurate have scientific credibility contain precise historical
+				and factual <br> information Using the chat implies agreement with the privacy policy and user agreement
+			</p>
+		</div>
 	</footer>
 
-
-
 	<script src="libs/swiper/swiper-bundle.min.js"></script>
-	<script src="libs/jquery/scrollbar/simple-scrollbar.min.js"></script>
+	<!-- <script src="libs/jquery/scrollbar/simple-scrollbar.min.js"></script> -->
 	<script type="module" src="./js/main.js"></script>
 </body>
 

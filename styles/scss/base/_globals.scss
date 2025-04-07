@@ -6,6 +6,10 @@ body {
   line-height: 1.28;
   color: var(--color-light);
   background-color: var(--color-dark);
+
+  @include desktop-media {
+    padding-inline: 15px;
+  }
 }
 
 a,
@@ -19,27 +23,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-//titles
-// h1,
-// h2,
-// h3,
-// h4 {
-//   font-weight: 500;
-// }
-// h1,
-// .h1 {
-//   @include fluid-text(62, 43);
-// }
-// h2,
-// .h2 {
-//   @include fluid-text(40, 36);
-// }
-// h3,
-// .h3 {
-//   @include fluid-text(30, 26);
-// }
-// h4,
-// .h4 {
-//   @include fluid-text(20, 18);
-// }

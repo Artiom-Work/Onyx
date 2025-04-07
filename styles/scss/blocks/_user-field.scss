@@ -1,0 +1,85 @@
+.user-field {
+  min-height: calc(160px + var(--container-margin-y) * -1);
+
+  margin-block: var(--container-margin-y) 0;
+  padding-block: calc((var(--container-margin-y) * -1) + 18px) 10px;
+  padding-inline: var(--container-padding-x) 11px;
+  border-left: 1px solid var(--color-gray-light);
+  border-right: 2px solid var(--color-gray-light);
+  border-bottom: 3px solid var(--color-gray-light);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__message {
+    min-height: 84px;
+  }
+
+  &__controls {
+    @include flex-space-between;
+    gap: 10px;
+    min-height: var(--button-height);
+    align-self: end;
+  }
+}
+
+.user-field__message {
+  &-input {
+    background-color: transparent;
+    overflow: auto;
+    border: none;
+    width: 100%;
+    resize: none;
+    color: var(--color-light);
+    &::placeholder {
+      @include fluid-text(17, 12);
+      color: var(--color-gray-alt);
+      letter-spacing: -1px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.user-field__button {
+  &--padding {
+    padding-inline: 10px 17px;
+  }
+  &--send {
+    text-transform: uppercase;
+  }
+
+  &-text {
+    margin-right: 7px;
+
+    &--big-margin {
+      margin-right: 13px;
+      margin-left: 8px;
+      letter-spacing: 0.2px;
+    }
+  }
+}
+.user-field__image-upload {
+  &-label {
+    @include hover {
+      transition-duration: var(--transition-duration);
+      filter: brightness(80%);
+    }
+    @include active {
+      transition-duration: var(--transition-duration);
+      filter: brightness(60%);
+      scale: 0.98;
+    }
+  }
+  &-icon {
+    fill: #787878;
+    position: relative;
+    top: 3px;
+    right: -9px;
+  }
+}
