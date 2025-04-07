@@ -3,10 +3,7 @@
   margin-block: var(--container-margin-y) 0;
   height: 551px;
   padding-right: 0;
-
-  border-left: 2px solid var(--color-gray-light);
-  border-right: 2px solid var(--color-gray-light);
-  border-bottom: 3px solid var(--color-gray-light);
+  border-bottom: var(--border-block);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 .chat-body__shadow-block {

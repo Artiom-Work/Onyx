@@ -4,9 +4,7 @@
   margin-block: var(--container-margin-y) 0;
   padding-block: calc((var(--container-margin-y) * -1) + 18px) 10px;
   padding-inline: var(--container-padding-x) 11px;
-  border-left: 1px solid var(--color-gray-light);
-  border-right: 2px solid var(--color-gray-light);
-  border-bottom: 3px solid var(--color-gray-light);
+  border-bottom: 3px solid var(--color-border);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 
   &__form {
@@ -45,8 +43,44 @@
     }
   }
 }
+.user-field__select {
+  width: 100%;
+  height: var(--button-height);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: var(--border-radius-small);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  z-index: 3;
+  cursor: pointer;
 
+  &-option {
+    background-color: var(--color-dark);
+    min-height: var(--button-height);
+    color: var(--color-light);
+    margin: 0 10px;
+    text-align: center;
+  }
+}
 .user-field__button {
+  &-select-wrapper {
+    position: relative;
+    transition-duration: var(--transition-duration);
+    @include hover {
+      filter: brightness(80%);
+      .user-field__button {
+        color: var(--color-accent);
+      }
+    }
+    @include active {
+      filter: brightness(60%);
+      scale: 0.98;
+    }
+  }
+
   &--padding {
     padding-inline: 10px 17px;
   }

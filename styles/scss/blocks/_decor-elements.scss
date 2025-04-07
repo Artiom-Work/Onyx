@@ -30,8 +30,10 @@
     top: -2px;
     left: 0;
     content: "▶";
-    rotate: 90deg;
     color: var(--color-gray-alt);
     font-size: 15px;
+  }
+  &--rotate {
+    rotate: 90deg;
   }
 }

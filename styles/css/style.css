@@ -149,9 +149,11 @@ svg * {
   --color-gray-light: #787878b3;
   --color-gray-alt: #787878;
   --color-accent: #44dafb;
+  --color-border: #5b5b5b;
   --border: 1px solid var(--color-gray-light);
   --border-radius: 25px;
   --border-radius-small: 15px;
+  --border-block: 2px solid var(--color-border);
   --font-family-base: "AvenirNext", sans-serif;
   --font-family-reserve: "AcuminPro-Regular", sans-serif;
   --font-family-footer: "tahoma", sans-serif;
@@ -176,6 +178,26 @@ svg * {
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
   margin-inline: auto;
   padding-inline: var(--container-padding-x);
+}
+
+.chat-wrapper {
+  position: relative;
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  margin-inline: auto;
+  background-color: var(--color-dark);
+}
+.chat-wrapper::before {
+  position: absolute;
+  content: "";
+  width: calc(100% + 4px);
+  height: 100%;
+  left: -2px;
+  top: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(67%, rgb(71, 71, 71)), to(rgb(0, 0, 0)));
+  background: linear-gradient(to top, rgb(71, 71, 71) 67%, rgb(0, 0, 0) 100%);
 }
 
 .visually-hidden {
@@ -349,9 +371,11 @@ a {
   top: -2px;
   left: 0;
   content: "▶";
-  rotate: 90deg;
   color: var(--color-gray-alt);
   font-size: 15px;
+}
+.decor-triangle--rotate {
+  rotate: 90deg;
 }
 
 .button {
@@ -455,21 +479,10 @@ a {
   position: relative;
   background-color: var(--color-dark);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
+  border-bottom: var(--border-block);
   min-height: 236px;
   padding-block: 17px;
   padding-right: 25px;
-}
-.header::before {
-  position: absolute;
-  content: "";
-  width: calc(100% + 3px);
-  height: 100%;
-  left: -1.5px;
-  top: 1px;
-  z-index: -1;
-  border-radius: inherit;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgb(71, 71, 71)), color-stop(75%, rgba(32, 32, 32, 0.1)));
-  background: linear-gradient(0deg, rgb(71, 71, 71) 0%, rgba(32, 32, 32, 0.1) 75%);
 }
 
 .chat-info {
@@ -712,9 +725,7 @@ a {
   margin-block: var(--container-margin-y) 0;
   height: 551px;
   padding-right: 0;
-  border-left: 2px solid var(--color-gray-light);
-  border-right: 2px solid var(--color-gray-light);
-  border-bottom: 3px solid var(--color-gray-light);
+  border-bottom: var(--border-block);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
@@ -814,9 +825,7 @@ a {
   margin-block: var(--container-margin-y) 0;
   padding-block: calc(var(--container-margin-y) * -1 + 18px) 10px;
   padding-inline: var(--container-padding-x) 11px;
-  border-left: 1px solid var(--color-gray-light);
-  border-right: 2px solid var(--color-gray-light);
-  border-bottom: 3px solid var(--color-gray-light);
+  border-bottom: 3px solid var(--color-border);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 .user-field__form {
@@ -885,6 +894,56 @@ a {
   outline: none;
 }
 
+.user-field__select {
+  width: 100%;
+  height: var(--button-height);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: var(--border-radius-small);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  z-index: 3;
+  cursor: pointer;
+}
+.user-field__select-option {
+  background-color: var(--color-dark);
+  min-height: var(--button-height);
+  color: var(--color-light);
+  margin: 0 10px;
+  text-align: center;
+}
+
+.user-field__button-select-wrapper {
+  position: relative;
+  -webkit-transition-duration: var(--transition-duration);
+          transition-duration: var(--transition-duration);
+}
+@media (hover: hover) {
+  .user-field__button-select-wrapper:hover {
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+  .user-field__button-select-wrapper:hover .user-field__button {
+    color: var(--color-accent);
+  }
+}
+@media (hover: none) {
+  .user-field__button-select-wrapper:active {
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+  .user-field__button-select-wrapper:active .user-field__button {
+    color: var(--color-accent);
+  }
+}
+.user-field__button-select-wrapper:active {
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+  scale: 0.98;
+}
 .user-field__button--padding {
   padding-inline: 10px 17px;
 }
