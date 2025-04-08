@@ -46,7 +46,7 @@
   &--round {
     @include square(30px);
     @include flex-center(true);
-    background-color: var(--color-dark-light);
+    background-color: var(--color-dark-alternate);
     border-radius: 50%;
 
     &::before {

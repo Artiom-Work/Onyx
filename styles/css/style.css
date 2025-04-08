@@ -140,9 +140,8 @@ svg * {
 }
 :root {
   --color-dark: #000000;
-  --color-dark-light: #2a2929;
-  --text-footer: #ffffff45;
-  --color-message-bg: #141414;
+  --color-dark-light: #212121;
+  --color-dark-alternate: #ffffff45;
   --color-light: #ffffff;
   --color-text-light: #ffffffcc;
   --color-gray: #202020;
@@ -316,6 +315,29 @@ a {
   color: inherit;
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-alternate);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-light);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-alternate);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 .main-image {
   width: 295px;
   aspect-ratio: 1;
@@ -392,7 +414,7 @@ a {
 .main-image__img {
   position: relative;
   z-index: 2;
-  top: -7px;
+  top: -10px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -564,7 +586,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: var(--color-dark-light);
+  background-color: var(--color-dark-alternate);
   border-radius: 50%;
 }
 .button--round::before {
@@ -674,9 +696,10 @@ a {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 15px 22px;
+  gap: 15px 19px;
   max-width: 308px;
   width: 100%;
+  padding-left: 10px;
 }
 @media (max-width: 1023px) {
   .chat-info {
@@ -686,6 +709,7 @@ a {
 @media (max-width: 767px) {
   .chat-info {
     gap: 0;
+    padding-left: 0;
   }
 }
 .chat-info__title {
@@ -694,7 +718,7 @@ a {
 }
 .chat-info__balance {
   position: relative;
-  background-color: var(--color-dark-light);
+  background-color: var(--color-dark-alternate);
   border-radius: var(--border-radius);
   height: var(--button-height);
   padding: 2px 2px 2px 56px;
@@ -741,7 +765,7 @@ a {
 .chat-info__balance-button {
   background-color: var(--color-dark);
 }
-.chat-info__link {
+.chat-info__user-profile-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -751,6 +775,32 @@ a {
   gap: 10px;
   font-family: var(--font-family-reserve);
   font-size: 15px;
+}
+@media (max-width: 767px) {
+  .chat-info__user-profile-name {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+    gap: 0;
+    margin-top: 16px;
+  }
+}
+@media (max-width: 575px) {
+  .chat-info__user-profile-name {
+    font-size: clamp(12px, 2.6086956522vw, 15px);
+  }
+}
+.chat-info__link {
+  font-size: 13px;
+  font-family: var(--font-family-base);
+  font-weight: 700;
+}
+.chat-info__link--text {
+  color: var(--color-gray-alt);
 }
 @media (hover: hover) {
   .chat-info__link:hover {
@@ -766,25 +816,6 @@ a {
 }
 .chat-info__link:active {
   scale: 0.95;
-}
-@media (max-width: 767px) {
-  .chat-info__link {
-    display: block;
-    margin-top: 16px;
-  }
-}
-@media (max-width: 575px) {
-  .chat-info__link {
-    font-size: clamp(12px, 2.6086956522vw, 15px);
-  }
-}
-.chat-info__link__text {
-  color: var(--color-gray-alt);
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  font-family: var(--font-family-base);
-  font-weight: 700;
 }
 
 .chats {
@@ -840,9 +871,9 @@ a {
   }
 }
 .chats__wrapper {
-  padding-bottom: 8px;
   margin-left: 0;
   height: 60px;
+  margin-bottom: 5px;
 }
 @media (max-width: 767px) {
   .chats__wrapper {
@@ -1201,7 +1232,7 @@ a {
   font-size: 14px;
   padding: 18.8px 27px;
   border-radius: 15px;
-  background-color: var(--color-message-bg);
+  background-color: var(--color-dark-light);
   border-radius: var(--border-radius-small);
   -webkit-box-shadow: -4px 1px 31px 6px rgba(255, 255, 255, 0.15) inset;
           box-shadow: -4px 1px 31px 6px rgba(255, 255, 255, 0.15) inset;
@@ -1315,6 +1346,7 @@ a {
 }
 
 .user-field__select {
+  color: transparent;
   width: 100%;
   height: var(--button-height);
   -webkit-appearance: none;
@@ -1452,7 +1484,7 @@ a {
 .footer__text {
   font-size: clamp(12px, 2.4347826087vw, 14px);
   font-family: var(--font-family-footer);
-  color: var(--text-footer);
+  color: var(--color-dark-alternate);
   text-align: center;
   line-height: 1.27;
 }/*# sourceMappingURL=style.css.map */

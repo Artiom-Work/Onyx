@@ -3,8 +3,6 @@ const blockUserSelectChat = document.querySelector('.user-field__button-select-w
 const userSelectChatButton = document.querySelector('.user-field__select');
 let clickSelectCounter = 0;
 
-
-
 //for block chats
 
 const swiper = new Swiper('.swiper', {
@@ -53,3 +51,13 @@ blockUserSelectChat.addEventListener('click', function (e) {
 		blockUserSelectChat.querySelector('.decor-triangle').classList.add('decor-triangle--rotate');
 	}
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+	const select = document.querySelector('.user-field__select')
+	const buttonTextSpan = document.querySelector('.user-field__button-text')
+
+	select.addEventListener('change', function () {
+		const selectedOption = this.options[this.selectedIndex]
+		buttonTextSpan.textContent = selectedOption.textContent
+	})
+})

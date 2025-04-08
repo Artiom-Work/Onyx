@@ -27,9 +27,9 @@
     right: 0;
   }
   &__wrapper {
-    padding-bottom: 8px;
     margin-left: 0;
     height: 60px;
+    margin-bottom: 5px;
 
     @include mobile-media {
       margin-right: 0px;

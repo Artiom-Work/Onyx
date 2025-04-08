@@ -4,15 +4,17 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px 22px;
+  gap: 15px 19px;
   max-width: 308px;
   width: 100%;
+  padding-left: 10px;
 
   @include tablet-media {
     max-width: 150px;
   }
   @include mobile-media {
     gap: 0;
+    padding-left: 0;
   }
   &__title {
     @include fluid-text(28, 16);
@@ -21,7 +23,7 @@
 
   &__balance {
     position: relative;
-    background-color: var(--color-dark-light);
+    background-color: var(--color-dark-alternate);
     border-radius: var(--border-radius);
     height: var(--button-height);
     padding: 2px 2px 2px 56px;
@@ -58,33 +60,35 @@
     }
   }
 
-  &__link {
+  &__user-profile-name {
     display: flex;
     align-items: center;
     gap: 10px;
     font-family: var(--font-family-reserve);
     font-size: 15px;
 
-    @include hover {
-      filter: brightness(80%);
-    }
-    @include active {
-      scale: 0.95;
-    }
     @include mobile-media {
-      display: block;
+      flex-direction: column;
+      align-items: start;
+      gap: 0;
       margin-top: 16px;
     }
     @media (max-width: 575px) {
       @include fluid-text(15, 12);
     }
-    &__text {
+  }
+  &__link {
+    font-size: 13px;
+    font-family: var(--font-family-base);
+    font-weight: 700;
+    &--text {
       color: var(--color-gray-alt);
-      display: block;
-      margin-top: 4px;
-      font-size: 13px;
-      font-family: var(--font-family-base);
-      font-weight: 700;
+    }
+    @include hover {
+      filter: brightness(80%);
+    }
+    @include active {
+      scale: 0.95;
     }
   }
 }

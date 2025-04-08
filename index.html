@@ -10,7 +10,6 @@
 	<!-- <meta name="description"
 		content="Add your page description ..."> -->
 	<link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
-	<!-- <link rel="stylesheet" href="libs/jquery/scrollbar/simple-scrollbar.css"> -->
 	<title>Onyx</title>
 	<link rel="stylesheet" href="styles/css/style.css">
 </head>
@@ -33,13 +32,17 @@
 					</a>
 				</div>
 
-				<a class="chat-info__link" href="https://infocigane@bot.net" target="_blank" title="Выйти">
-					<span>infocigane@bot.net</span><br>
-					<svg class="hidden-mobile" viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
-						<use xlink:href="./images/icons/sprite-icons.svg#door"></use>
-					</svg>
-					<span class="chat-info__link__text visible-mobile">(Выход)</span>
-				</a>
+				<div class="chat-info__user-profile-name">
+					<span>infocigane@bot.net</span>
+
+					<a class="chat-info__link" href="#!" target="_blank" title="Выйти">
+						<svg class="hidden-mobile" viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
+							<use xlink:href="./images/icons/sprite-icons.svg#door"></use>
+						</svg>
+						<span class="chat-info__link-text visible-mobile">(Выход)</span>
+					</a>
+				</div>
+
 			</nav>
 
 			<div class="main-image">
@@ -496,7 +499,6 @@
 	</footer>
 
 	<script src="libs/swiper/swiper-bundle.min.js"></script>
-	<!-- <script src="libs/jquery/scrollbar/simple-scrollbar.min.js"></script> -->
 	<script type="module" src="./js/main.js"></script>
 </body>
 
