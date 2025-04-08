@@ -6,16 +6,19 @@
 @import "./base/_variables.scss";
 @import "./base/_utils.scss";
 @import "./base/_globals.scss";
-//blocks
+// blocks
 @import "./blocks/_main-image.scss";
-@import "./blocks/_logo.scss";
 @import "./blocks/_decor-elements.scss";
 @import "./blocks/_button.scss";
+// header
 @import "./blocks/_header.scss";
+@import "./blocks/_logo.scss";
 @import "./blocks/_chat-info.scss";
 @import "./blocks/_chats.scss";
+// main
 @import "./blocks/_chat-body.scss";
 @import "./blocks/_chat-message.scss";
 @import "./blocks/_user-field.scss";
+//footer
 @import "./blocks/_footer.scss";
 //==========

@@ -10,16 +10,36 @@
   margin-inline: auto;
   background-color: var(--color-dark);
 
+  @include mobile-media {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
   &::before {
     position: absolute;
     content: "";
     width: calc(100% + 4px);
     height: 100%;
     left: -2px;
-    top: 1px;
     z-index: -1;
     border-radius: inherit;
     background: linear-gradient(to top, rgb(71, 71, 71) 67%, rgb(0, 0, 0) 100%);
+
+    @include mobile-media {
+      background: linear-gradient(
+        to top,
+        rgb(71, 71, 71) 0%,
+        rgb(0, 0, 0) 80%,
+        rgb(0, 0, 0) 100%
+      );
+    }
+  }
+}
+.chat {
+  @include mobile-media {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 }
 .visually-hidden {

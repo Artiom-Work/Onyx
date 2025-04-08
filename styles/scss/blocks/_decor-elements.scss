@@ -25,6 +25,9 @@
   width: 13px;
   height: 15px;
 
+  @include mobile-media {
+    height: 17px;
+  }
   &::after {
     position: absolute;
     top: -2px;

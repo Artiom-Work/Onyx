@@ -1,14 +1,22 @@
 .logo {
+  transition-duration: var(--transition-duration);
   @include hover {
-    color: var(--color-accent);
     filter: brightness(80%);
   }
   @include active {
-    scale: 0.98;
     transition-duration: var(--transition-duration);
+    filter: brightness(60%);
+    scale: 0.98;
   }
   &__link {
-    @include fluid-text(29, 24);
+    font-size: 29px;
     font-weight: 400;
+
+    @include mobile-media {
+      letter-spacing: 0.6px;
+    }
+    @media (max-width: 575px) {
+      @include fluid-text(29, 20);
+    }
   }
 }

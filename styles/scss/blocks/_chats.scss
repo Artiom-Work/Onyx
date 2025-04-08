@@ -5,106 +5,37 @@
   width: 100%;
   padding-right: 4px;
 
+  @include desktop-media {
+    max-width: 400px;
+  }
+  @include tablet-media {
+    max-width: 230px;
+  }
+  @include mobile-media {
+    max-width: 174px;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: end;
+    gap: 11px;
+    margin-top: 68px;
+    position: relative;
+    right: -20px;
+  }
+  @include mobile-s-media {
+    margin-top: 0px;
+    max-width: 135px;
+  }
   &__wrapper {
     padding-bottom: 8px;
     margin-left: 0;
-  }
+    height: 60px;
 
-  &__slide {
-    display: flex;
-    gap: 7px;
-    &-left,
-    &-right {
-      & .chats__item:first-child {
-        margin-bottom: 8px;
-      }
-    }
-  }
-  &__item {
-    display: flex;
-    align-items: center;
-    &-counter {
-      @include square(25.5px);
-      @include flex-center(true);
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 50%;
-      background-color: var(--color-gray-light);
-    }
-
-    &-button {
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      background-color: transparent;
-      border: none;
-      color: var(--color-text-light);
-
-      &[disabled] {
-        padding-right: 22px;
-      }
-      @include hover {
-        &:not([disabled]) {
-          color: var(--color-accent);
-          filter: brightness(80%);
-        }
-      }
-
-      @include active {
-        &:not([disabled]) {
-          filter: brightness(40%);
-          scale: 0.98;
-        }
-      }
-      &--lock {
-        color: var(--color-gray-alt);
-
-        &::before {
-          position: absolute;
-          content: "";
-          width: 11px;
-          height: 13px;
-          right: 0;
-          background: url(../../images/icons/lock.svg) no-repeat center / cover;
-        }
-      }
+    @include mobile-media {
+      margin-right: 0px;
+      min-width: 145px;
     }
   }
 
-  &__slider-buttons-group {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    max-width: 30px;
-    width: 100%;
-    height: 10px;
-    @include flex-space-between;
-    margin-right: 29px;
-    gap: 10px;
-  }
-  &__slider-button {
-    background-color: transparent;
-    border: none;
-    height: 10px !important;
-    width: 10px !important;
-    color: var(--color-gray-alt);
-    position: static !important;
-    left: unset !important;
-    bottom: unset !important;
-    top: unset !important;
-    right: unset !important;
-
-    @include hover {
-      filter: brightness(60%);
-    }
-    @include active {
-      scale: 0.98;
-    }
-    &::after,
-    &::before {
-      display: none;
-    }
-  }
   &__button {
     width: 32px;
     flex-shrink: 0;
@@ -115,5 +46,125 @@
     &--plus {
       width: 26px;
     }
+  }
+}
+/*=== Styles for slider ( chats menu )====*/
+
+.chats__slide {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  gap: 8px;
+  white-space: nowrap;
+  width: 100%;
+
+  @include mobile-media {
+    white-space: initial;
+  }
+}
+//styling slide content
+.chats__item {
+  display: flex;
+  align-items: center;
+
+  @include mobile-media {
+    gap: 5px;
+  }
+  @media (max-width: 575px) {
+    gap: 0px;
+  }
+  &-counter {
+    @include square(25.5px);
+    @include flex-center(true);
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    background-color: var(--color-dark-light);
+    flex-shrink: 0;
+
+    @media (max-width: 575px) {
+      @include fluid-text(14, 11);
+      width: 22px;
+    }
+  }
+
+  &-button {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 14px;
+
+    @include mobile-media {
+      color: var(--color-light);
+    }
+    @media (max-width: 575px) {
+      @include fluid-text(14, 11);
+    }
+    &[disabled] {
+      padding-right: 27px;
+    }
+    @include hover {
+      &:not([disabled]) {
+        filter: brightness(80%);
+      }
+    }
+
+    @include active {
+      &:not([disabled]) {
+        filter: brightness(40%);
+        scale: 0.98;
+      }
+    }
+    &--lock {
+      color: var(--color-gray-alt);
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 11px;
+        height: 13px;
+        right: 0;
+        background: url(../../images/icons/lock.svg) no-repeat center / cover;
+      }
+    }
+  }
+}
+// Navigation of slider
+.chats__slider-buttons-group {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 30px;
+  width: 100%;
+  height: 10px;
+  @include flex-space-between;
+  margin-right: 29px;
+  gap: 10px;
+}
+
+.chats__slider-button {
+  background-color: transparent;
+  border: none;
+  height: 10px !important;
+  width: 10px !important;
+  color: var(--color-gray-alt);
+  position: static !important;
+  left: unset !important;
+  bottom: unset !important;
+  top: unset !important;
+  right: unset !important;
+
+  @include hover {
+    filter: brightness(60%);
+  }
+  @include active {
+    scale: 0.98;
+  }
+  &::after,
+  &::before {
+    display: none;
   }
 }

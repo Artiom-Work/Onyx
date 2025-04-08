@@ -4,7 +4,7 @@
   --text-footer: #ffffff45;
   --color-message-bg: #141414;
   --color-light: #ffffff;
-  --color-text-light: rgba(255, 255, 255, 0.8);
+  --color-text-light: #ffffffcc;
   --color-gray: #202020;
   --color-gray-light: #787878b3;
   --color-gray-alt: #787878;
@@ -21,18 +21,36 @@
   --font-family-footer: "tahoma", sans-serif;
 
   --container-width: 1130px;
+  --header-height: 236px;
+  --user-field-height: 160px;
+  --shadow-block-height: 77px;
   --container-padding-x: 20px;
   --container-margin-y: -20px;
 
-  // --input-height: 59px;
   --button-height: 33px;
+  // --input-height: 59px;
 
   --transition-duration: 0.3s;
 
   @include desktop-media {
     --container-padding-y: 50px;
   }
+  @include tablet-media {
+    --header-height: 161px;
+  }
   @include mobile-media {
     --container-padding-y: 30px;
+    --container-padding-x: 10px;
+
+    --button-height: 39px;
+    --shadow-block-height: 62px;
+    --user-field-height: 220px;
+    --header-height: 214px;
+
+    --border-radius: 30px;
+  }
+  @include mobile-s-media {
+    --button-height: 28px;
+    --header-height: 190px;
   }
 }

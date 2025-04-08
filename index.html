@@ -33,11 +33,12 @@
 					</a>
 				</div>
 
-				<a class="chat-info__link" href="https://infocigane@bot.net" target="_blank" title="Перейти для регистрации">
-					<span>infocigane@bot.net</span>
-					<svg viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
+				<a class="chat-info__link" href="https://infocigane@bot.net" target="_blank" title="Выйти">
+					<span>infocigane@bot.net</span><br>
+					<svg class="hidden-mobile" viewBox="0 0 70 70" width="14" height="14" fill="#ffffff">
 						<use xlink:href="./images/icons/sprite-icons.svg#door"></use>
 					</svg>
+					<span class="chat-info__link__text visible-mobile">(Выход)</span>
 				</a>
 			</nav>
 
@@ -48,155 +49,109 @@
 				<span class="main-image__text">ask Marilyn</span>
 			</div>
 
-			<div class="header__chats chats">
+			<div class="chats">
 				<button class="chats__button button button--refresh button--round" type="button"
 					title="Кнопка повторения ответа">
 					<span class="visually-hidden">Кнопка повтора ответа</span>
 				</button>
 
 				<div class="chats__wrapper swiper">
-					<ul class="chats__list swiper-wrapper">
+					<div class="chats__list swiper-wrapper">
 						<li class="chats__slide swiper-slide">
-							<div class="chats__slide-left">
-								<div class="chats__item">
-									<span class="chats__item-counter">1</span>
-									<button class="chats__item-button" type="button">
-										<span>The platform does&nbsp;...</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">2</span>
-									<button class="chats__item-button" type="button">
-										<span>Создать HTML сайт ...</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">1</span>
+								<button class="chats__item-button" type="button">
+									<span>The platform <span class="hidden-mobile">does&nbsp;</span>...</span>
+								</button>
 							</div>
 
-							<div class="chats__slide-right">
-								<div class="chats__item">
-									<span class="chats__item-counter">3</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">4</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">2</span>
+								<button class="chats__item-button" type="button">
+									<span>Создать HTM<span class="hidden-mobile">L сайт</span>...</span>
+								</button>
 							</div>
 						</li>
 
 						<li class="chats__slide swiper-slide">
-							<div class="chats__slide-left">
-								<div class="chats__item">
-									<span class="chats__item-counter">5</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">6</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">3</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
 							</div>
-
-							<div class="chats__slide-right">
-								<div class="chats__item">
-									<span class="chats__item-counter">7</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">8</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">4</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
 							</div>
 						</li>
 
 						<li class="chats__slide swiper-slide">
-							<div class="chats__slide-left">
-								<div class="chats__item">
-									<span class="chats__item-counter">9</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">10</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">5</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
 							</div>
-
-							<div class="chats__slide-right">
-								<div class="chats__item">
-									<span class="chats__item-counter">11</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">12</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">6</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
 							</div>
 						</li>
 
 						<li class="chats__slide swiper-slide">
-							<div class="chats__slide-left">
-								<div class="chats__item">
-									<span class="chats__item-counter">13</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">14</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">7</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
 							</div>
-
-							<div class="chats__slide-right">
-								<div class="chats__item">
-									<span class="chats__item-counter">15</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
-
-								<div class="chats__item">
-									<span class="chats__item-counter">16</span>
-									<button class="chats__item-button chats__item-button--lock" type="button" disabled>
-										<span>Новый чат</span>
-									</button>
-								</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">8</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
 							</div>
 						</li>
-					</ul>
 
+						<li class="chats__slide swiper-slide">
+							<div class="chats__item">
+								<span class="chats__item-counter">9</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">10</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</li>
 
+						<li class="chats__slide swiper-slide">
+							<div class="chats__item">
+								<span class="chats__item-counter">11</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+							<div class="chats__item">
+								<span class="chats__item-counter">12</span>
+								<button class="chats__item-button chats__item-button--lock" type="button" disabled>
+									<span>Новый чат</span>
+								</button>
+							</div>
+						</li>
+
+					</div>
 				</div>
 
-				<div class="chats__slider-buttons-group">
+				<div class="chats__slider-buttons-group hidden-mobile">
 					<button class="chats__slider-button chats__slider-button--prev swiper-button-prev"
 						title="Просмотреть предидущие чаты">
 						<span class="visually-hidden">Кнопка переключения слайдера</span>
@@ -209,19 +164,20 @@
 					</button>
 				</div>
 
-				<button class="chats__button chats__button--plus button button--plus button--round" type="button"
+				<button class="chats__button chats__button--plus button button--plus button--round hidden-mobile" type="button"
 					title="Кнопка создания новога чата">
 					<span class="visually-hidden">Кнопка создания новога чата</span>
 				</button>
 			</div>
 		</header>
 
-		<main>
+		<main class="chat">
 			<h1 class="visually-hidden">ONYXbot</h1>
 
 			<div class="chat-body container">
 				<div class="chat-body__shadow-block"></div>
 				<div class="chat-body__inner">
+
 					<ul class="chat-body__message-list">
 						<li class="chat-body__message-item chat-message">
 							<div class="chat-message__controls">
@@ -240,7 +196,6 @@
 									<span class="visually-hidden">Повторить сообщение</span>
 								</button>
 							</div>
-							<!-- найти нормальную иконку -->
 							<article class="chat-message__wrapper">
 								<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32"
 									height="32" loading="lazy">
@@ -252,14 +207,14 @@
 										will correspond to&nbsp;reality be&nbsp;legally accurate have
 										scientific credibility contain ! The platform does not guarantee that the informational object
 										created
-										by&nbsp;artificial intelligence will correspond to
-										reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
-										guarantee
-										that the informational object created by&nbsp;artificial
-										intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
-										contain ! The platform does not guarantee that the
-										informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
-										be&nbsp;legally accurate have scientific credibility contain !
+										by<span class="hidden-mobile">&nbsp;artificial intelligence will correspond to
+											reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
+											guarantee
+											that the informational object created by&nbsp;artificial
+											intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
+											contain ! The platform does not guarantee that the
+											informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
+											be&nbsp;legally accurate have scientific credibility contain !</span>
 									</p>
 								</div>
 							</article>
@@ -284,8 +239,8 @@
 							</div>
 
 							<article class="chat-message__wrapper">
-								<img class="chat-message__image" src="./images/icons/head.svg" alt="Икнока волшебника" width="39"
-									height="44" loading="lazy">
+								<img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg"
+									alt="Икнока волшебника" width="39" height="44" loading="lazy">
 
 								<div class="chat-message__text">
 									<p>
@@ -294,97 +249,14 @@
 										will correspond to&nbsp;reality be&nbsp;legally accurate have
 										scientific credibility contain ! The platform does not guarantee that the informational object
 										created
-										by&nbsp;artificial intelligence will correspond to
-										reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
-										guarantee
-										that the informational object created by&nbsp;artificial
-										intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
-										contain ! The platform does not guarantee that the
-										informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
-										be&nbsp;legally accurate have scientific credibility contain !
-									</p>
-								</div>
-							</article>
-						</li>
-						<li class="chat-body__message-item chat-message">
-							<div class="chat-message__controls">
-								<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-									<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-										<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-									</svg>
-									<span class="visually-hidden">Копировать сообщение</span>
-
-								</button>
-
-								<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
-									<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-										<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-									</svg>
-									<span class="visually-hidden">Повторить сообщение</span>
-								</button>
-							</div>
-							<!-- найти нормальную иконку -->
-							<article class="chat-message__wrapper">
-								<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32"
-									height="32" loading="lazy">
-
-								<div class="chat-message__text">
-									<p>
-										The platform does not guarantee that the informational object created by&nbsp;artificial
-										intelligence
-										will correspond to&nbsp;reality be&nbsp;legally accurate have
-										scientific credibility contain ! The platform does not guarantee that the informational object
-										created
-										by&nbsp;artificial intelligence will correspond to
-										reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
-										guarantee
-										that the informational object created by&nbsp;artificial
-										intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
-										contain ! The platform does not guarantee that the
-										informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
-										be&nbsp;legally accurate have scientific credibility contain !
-									</p>
-								</div>
-							</article>
-						</li>
-
-						<li class="chat-body__message-item chat-message">
-							<div class="chat-message__controls">
-								<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-									<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-										<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-									</svg>
-									<span class="visually-hidden">Копировать сообщение</span>
-
-								</button>
-
-								<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
-									<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-										<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-									</svg>
-									<span class="visually-hidden">Повторить сообщение</span>
-								</button>
-							</div>
-
-							<article class="chat-message__wrapper">
-								<img class="chat-message__image" src="./images/icons/head.svg" alt="Икнока волшебника" width="39"
-									height="44" loading="lazy">
-
-								<div class="chat-message__text">
-									<p>
-										The platform does not guarantee that the informational object created by&nbsp;artificial
-										intelligence
-										will correspond to&nbsp;reality be&nbsp;legally accurate have
-										scientific credibility contain ! The platform does not guarantee that the informational object
-										created
-										by&nbsp;artificial intelligence will correspond to
-										reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
-										guarantee
-										that the informational object created by&nbsp;artificial
-										intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
-										contain ! The platform does not guarantee that the
-										informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
-										be&nbsp;legally accurate have scientific credibility contain !
+										by<span class="hidden-mobile">&nbsp;artificial intelligence will correspond to
+											reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
+											guarantee
+											that the informational object created by&nbsp;artificial
+											intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
+											contain ! The platform does not guarantee that the
+											informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
+											be&nbsp;legally accurate have scientific credibility contain !</span>
 									</p>
 								</div>
 							</article>
@@ -419,14 +291,14 @@
 										will correspond to&nbsp;reality be&nbsp;legally accurate have
 										scientific credibility contain ! The platform does not guarantee that the informational object
 										created
-										by&nbsp;artificial intelligence will correspond to
-										reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
-										guarantee
-										that the informational object created by&nbsp;artificial
-										intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
-										contain ! The platform does not guarantee that the
-										informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
-										be&nbsp;legally accurate have scientific credibility contain !
+										by<span class="hidden-mobile">&nbsp;artificial intelligence will correspond to
+											reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
+											guarantee
+											that the informational object created by&nbsp;artificial
+											intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
+											contain ! The platform does not guarantee that the
+											informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
+											be&nbsp;legally accurate have scientific credibility contain !</span>
 									</p>
 								</div>
 							</article>
@@ -451,8 +323,8 @@
 							</div>
 
 							<article class="chat-message__wrapper">
-								<img class="chat-message__image" src="./images/icons/head.svg" alt="Икнока волшебника" width="39"
-									height="44" loading="lazy">
+								<img class="chat-message__image chat-message__image--bot " src="./images/icons/head.svg"
+									alt="Икнока волшебника" width="39" height="44" loading="lazy">
 
 								<div class="chat-message__text">
 									<p>
@@ -461,19 +333,104 @@
 										will correspond to&nbsp;reality be&nbsp;legally accurate have
 										scientific credibility contain ! The platform does not guarantee that the informational object
 										created
-										by&nbsp;artificial intelligence will correspond to
-										reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
-										guarantee
-										that the informational object created by&nbsp;artificial
-										intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
-										contain ! The platform does not guarantee that the
-										informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
-										be&nbsp;legally accurate have scientific credibility contain !
+										by<span class="hidden-mobile">&nbsp;artificial intelligence will correspond to
+											reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
+											guarantee
+											that the informational object created by&nbsp;artificial
+											intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
+											contain ! The platform does not guarantee that the
+											informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
+											be&nbsp;legally accurate have scientific credibility contain !</span>
+									</p>
+								</div>
+							</article>
+						</li>
+
+						<li class="chat-body__message-item chat-message">
+							<div class="chat-message__controls">
+								<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
+									<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
+										<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
+									</svg>
+									<span class="visually-hidden">Копировать сообщение</span>
+
+								</button>
+
+								<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
+									<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
+										<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
+									</svg>
+									<span class="visually-hidden">Повторить сообщение</span>
+								</button>
+							</div>
+							<!-- найти нормальную иконку -->
+							<article class="chat-message__wrapper">
+								<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32"
+									height="32" loading="lazy">
+
+								<div class="chat-message__text">
+									<p>
+										The platform does not guarantee that the informational object created by&nbsp;artificial
+										intelligence
+										will correspond to&nbsp;reality be&nbsp;legally accurate have
+										scientific credibility contain ! The platform does not guarantee that the informational object
+										created
+										by<span class="hidden-mobile">&nbsp;artificial intelligence will correspond to
+											reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
+											guarantee
+											that the informational object created by&nbsp;artificial
+											intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
+											contain ! The platform does not guarantee that the
+											informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
+											be&nbsp;legally accurate have scientific credibility contain !</span>
+									</p>
+								</div>
+							</article>
+						</li>
+
+						<li class="chat-body__message-item chat-message">
+							<div class="chat-message__controls">
+								<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
+									<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
+										<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
+									</svg>
+									<span class="visually-hidden">Копировать сообщение</span>
+
+								</button>
+
+								<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
+									<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
+										<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
+									</svg>
+									<span class="visually-hidden">Повторить сообщение</span>
+								</button>
+							</div>
+
+							<article class="chat-message__wrapper">
+								<img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg"
+									alt="Икнока волшебника" width="39" height="44" loading="lazy">
+
+								<div class="chat-message__text">
+									<p>
+										The platform does not guarantee that the informational object created by&nbsp;artificial
+										intelligence
+										will correspond to&nbsp;reality be&nbsp;legally accurate have
+										scientific credibility contain ! The platform does not guarantee that the informational object
+										created
+										by<span class="hidden-mobile">&nbsp;artificial intelligence will correspond to
+											reality be&nbsp;legally accurate have scientific credibility contain ! The platform does not
+											guarantee
+											that the informational object created by&nbsp;artificial
+											intelligence will correspond to&nbsp;reality be&nbsp;legally accurate have scientific credibility
+											contain ! The platform does not guarantee that the
+											informational object created by&nbsp;artificial intelligence will correspond to&nbsp;reality
+											be&nbsp;legally accurate have scientific credibility contain !</span>
 									</p>
 								</div>
 							</article>
 						</li>
 					</ul>
+
 				</div>
 			</div>
 

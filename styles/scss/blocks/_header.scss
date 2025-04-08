@@ -7,7 +7,22 @@
   background-color: var(--color-dark);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   border-bottom: var(--border-block);
-  min-height: 236px;
+  min-height: var(--header-height);
   padding-block: 17px;
   padding-right: 25px;
+
+  @include mobile-media {
+    border-bottom: none;
+    padding-block: unset;
+    margin-inline: 0;
+  }
+  @include mobile-s-media {
+    align-items: start;
+    padding-block: 17px 0;
+  }
+  &.container {
+    @include mobile-media {
+      padding-inline: var(--container-padding-x) 0;
+    }
+  }
 }

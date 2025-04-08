@@ -1,34 +1,74 @@
 .chat-body {
   position: relative;
-  margin-block: var(--container-margin-y) 0;
-  height: 551px;
+  height: 531px;
   padding-right: 0;
   border-bottom: var(--border-block);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
-.chat-body__shadow-block {
-  position: absolute;
-  z-index: 3;
-  max-width: 1126px;
-  width: 95%;
-  height: 77px;
-  top: 40px;
-  left: 12px;
-  background: linear-gradient(to bottom, black 50%, rgba(0, 0, 0, 0.2) 100%);
-}
-.chat-body__inner {
-  padding-block: 60px 20px;
-}
-.chat-body__message-list {
-  padding-right: 34px;
-  height: 471px;
-  position: relative;
-  z-index: 2;
-  padding-block: 0 3px;
-  overflow-y: scroll;
-}
-.chat-body__message-item {
-  &:not(:last-child) {
-    margin-bottom: 21px;
+
+  @include mobile-media {
+    height: auto;
+    flex-grow: 1;
+    margin-inline: 0;
+  }
+  &__inner {
+    padding-block: 40px 20px;
+
+    @include mobile-media {
+      height: auto;
+    }
+    @include mobile-s-media {
+      padding-block: 0;
+    }
+  }
+
+  &__shadow-block {
+    position: absolute;
+    z-index: 3;
+    max-width: 1126px;
+    width: 96%;
+    height: var(--shadow-block-height);
+    top: 39px;
+    left: 12px;
+    background: linear-gradient(to bottom, black 50%, rgba(0, 0, 0, 0.2) 100%);
+
+    @include tablet-media {
+      width: 94%;
+    }
+    @include mobile-media {
+      left: 7px;
+    }
+    @include mobile-s-media {
+      top: -1px;
+    }
+  }
+
+  &__message-list {
+    padding-right: 37px;
+    height: 471px;
+    position: relative;
+    z-index: 2;
+    padding-block: 0 3px;
+    overflow-y: auto;
+
+    @include mobile-media {
+      height: calc(
+        100vh - var(--header-height) - var(--user-field-height) -
+          var(--shadow-block-height)
+      );
+    }
+
+    @include mobile-s-media {
+      height: calc(100vh - var(--header-height) - var(--user-field-height));
+    }
+  }
+
+  &__message-item {
+    &:not(:last-child) {
+      margin-bottom: 21px;
+
+      @include mobile-media {
+        margin-bottom: 23px;
+      }
+    }
   }
 }

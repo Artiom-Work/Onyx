@@ -16,6 +16,20 @@
     rgba(32, 32, 32, 1) 100%
   );
 
+  @include desktop-media {
+    left: 45%;
+  }
+  @include tablet-media {
+    left: 50%;
+    width: 200px;
+  }
+  @include mobile-media {
+    background: var(--color-dark);
+    width: 295px;
+  }
+  @include mobile-s-media {
+    width: 150px;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -26,6 +40,10 @@
     height: 100%;
     background-color: var(--color-dark);
     border-radius: inherit;
+
+    @include mobile-media {
+      display: none;
+    }
   }
 
   &::after {
@@ -41,13 +59,34 @@
   &__img {
     position: relative;
     z-index: 2;
-    top: -10px;
+    top: -7px;
     user-select: none;
+
+    @include tablet-media {
+      width: 150px;
+    }
+    @include mobile-media {
+      width: 203px;
+    }
+    @include mobile-s-media {
+      top: 0;
+    }
   }
 
   &__text {
     position: relative;
     z-index: 2;
     top: -15px;
+    font-size: 15px;
+
+    @include mobile-media {
+      top: -17px;
+    }
+    @media (max-width: 575px) {
+      @include fluid-text(15, 11);
+    }
+    @include mobile-s-media {
+      top: 0;
+    }
   }
 }

@@ -8,6 +8,10 @@
     gap: 5px;
     margin-bottom: 6px;
 
+    @include mobile-media {
+      padding-inline: 11px;
+      margin-bottom: 7px;
+    }
     &-button {
       background-color: transparent;
       border: none;
@@ -22,6 +26,13 @@
         scale: 0.95;
       }
     }
+
+    &-icon {
+      @include mobile-media {
+        width: 25px;
+        height: 25px;
+      }
+    }
   }
 
   &__wrapper {
@@ -31,13 +42,40 @@
     gap: 11px;
   }
 
+  &__image {
+    @include mobile-media {
+      width: 44px;
+      height: 44px;
+    }
+    @include mobile-s-media {
+      width: 36px;
+      height: 36px;
+    }
+
+    &--bot {
+      @include mobile-media {
+        width: 50px;
+        height: 60px;
+      }
+      @include mobile-s-media {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+
   &__text {
-    @include fluid-text(14, 12);
+    font-size: 14px;
     padding: 18.8px 27px;
     border-radius: 15px;
     background-color: var(--color-message-bg);
     border-radius: var(--border-radius-small);
     box-shadow: -4px 1px 31px 6px rgba(255, 255, 255, 0.15) inset;
+
+    @include mobile-media {
+      font-size: 15px;
+      padding: 18.8px 27px 17px 26px;
+    }
   }
 
   &:last-child &__text {

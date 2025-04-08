@@ -10,6 +10,12 @@ body {
   @include desktop-media {
     padding-inline: 15px;
   }
+  @include mobile-media {
+    padding-inline: 22px;
+  }
+  @include mobile-s-media {
+    padding-inline: 10px;
+  }
 }
 
 a,
