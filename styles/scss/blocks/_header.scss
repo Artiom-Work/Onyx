@@ -24,5 +24,8 @@
     @include mobile-media {
       padding-inline: var(--container-padding-x) 0;
     }
+    @include mobile-s-media {
+      padding-inline: unset;
+    }
   }
 }

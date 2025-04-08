@@ -23,7 +23,8 @@
   }
   @include mobile-s-media {
     margin-top: 0px;
-    max-width: 135px;
+    max-width: 100px;
+    right: 0;
   }
   &__wrapper {
     padding-bottom: 8px;

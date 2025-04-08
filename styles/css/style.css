@@ -619,6 +619,11 @@ a {
     padding-inline: var(--container-padding-x) 0;
   }
 }
+@media (max-width: 480px) {
+  .header.container {
+    padding-inline: unset;
+  }
+}
 
 .logo {
   -webkit-transition-duration: var(--transition-duration);
@@ -830,7 +835,8 @@ a {
 @media (max-width: 480px) {
   .chats {
     margin-top: 0px;
-    max-width: 135px;
+    max-width: 100px;
+    right: 0;
   }
 }
 .chats__wrapper {
