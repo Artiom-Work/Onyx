@@ -338,6 +338,83 @@ a {
   display: none;
 }
 
+.chat-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.message {
+  margin: 15px 0;
+  padding: 15px 25px;
+  border-radius: 25px;
+  max-width: 80%;
+}
+
+.bot-message {
+  background: #f1f1f1;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.typing-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.text {
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+
+.text.visible {
+  visibility: visible;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #333;
+  margin-left: 2px;
+  -webkit-animation: blink 1s infinite;
+          animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 .main-image {
   width: 295px;
   aspect-ratio: 1;
@@ -799,7 +876,7 @@ a {
   font-family: var(--font-family-base);
   font-weight: 700;
 }
-.chat-info__link--text {
+.chat-info__link-text {
   color: var(--color-gray-alt);
 }
 @media (hover: hover) {
@@ -1118,6 +1195,8 @@ a {
   }
 }
 .chat-body__message-list {
+  gap: 160px;
+  padding: 0;
   padding-right: 37px;
   height: 471px;
   position: relative;
@@ -1135,6 +1214,9 @@ a {
     height: calc(100vh - var(--header-height) - var(--user-field-height));
   }
 }
+.chat-body__message-item:first-child {
+  margin-block: 100px;
+}
 .chat-body__message-item:not(:last-child) {
   margin-bottom: 21px;
 }
@@ -1144,6 +1226,18 @@ a {
   }
 }
 
+.chat-message--user .chat-message__controls,
+.chat-message--user .chat-message__wrapper {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+.chat-message--bot .chat-message__controls,
+.chat-message--bot .chat-message__wrapper {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
 .chat-message__controls {
   display: -webkit-box;
   display: -ms-flexbox;

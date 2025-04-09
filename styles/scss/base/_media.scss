@@ -3,10 +3,10 @@ $tablet: 1023px;
 $mobile: 767px;
 $mobile-s: 480px;
 
-$desktop-above: 1171px; // for modile first develop
-$tablet-above: 1024px; // for modile first develop
-$mobile-above: 768px; // for modile first develop
-$mobile-s-above: 481px; // for modile first develop
+$desktop-above: 1171px;
+$tablet-above: 1024px;
+$mobile-above: 768px;
+$mobile-s-above: 481px;
 
 @mixin desktop-media {
   @media (max-width: $desktop) {

@@ -43,6 +43,8 @@
   }
 
   &__message-list {
+    gap: 160px;
+    padding: 0;
     padding-right: 37px;
     height: 471px;
     position: relative;
@@ -63,6 +65,9 @@
   }
 
   &__message-item {
+    &:first-child {
+      margin-block: 100px;
+    }
     &:not(:last-child) {
       margin-bottom: 21px;
 

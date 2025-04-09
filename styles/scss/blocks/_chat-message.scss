@@ -1,4 +1,16 @@
 .chat-message {
+  &--user {
+    .chat-message__controls,
+    .chat-message__wrapper {
+      justify-content: end;
+    }
+  }
+  &--bot {
+    .chat-message__controls,
+    .chat-message__wrapper {
+      justify-content: start;
+    }
+  }
   &__controls {
     display: flex;
     align-items: center;
