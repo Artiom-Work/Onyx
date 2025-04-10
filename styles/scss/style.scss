@@ -7,7 +7,6 @@
 @import "./base/_utils.scss";
 @import "./base/_globals.scss";
 @import "./base/_scrollbar.scss";
-@import "./base/_text-animation.scss";
 // blocks
 @import "./blocks/_main-image.scss";
 @import "./blocks/_decor-elements.scss";
@@ -23,4 +22,14 @@
 @import "./blocks/_user-field.scss";
 //footer
 @import "./blocks/_footer.scss";
-//==========
+
+// Для разработчиков
+
+// Стили разбиты 2 части в разных папках.
+
+// 1 .Базовые стили : переменные , сиксинны для стилей , миксины для медиазапросо , стили для всей страницы , стили для переиспользуемых , утилитарных классов классов. ( если вдруг будет не понято , ипользуйте scss map )
+
+// 2. Стрили для бэм блоков.
+// Блоки логически разделены на блоки к верхней1 части чата : "main-image" "header" "chat-info" "chats" , средней части ( где расположены сообшения от бота и пользователя ) "chat-body" "chat-message"  , части взаиодействия с пользователем ( форма для ввода сообщений ) "user-field" и нижняя часть "footer".
+
+// P.S. Если что-то не понято пишите TELEGRAM -- @ArtiomMezheynikov

@@ -31,7 +31,6 @@ $mobile-s-above: 481px;
   }
 }
 
-// for mobile-first
 @mixin desktop-media-above {
   @media (min-width: $desktop-above) {
     @content;
@@ -54,7 +53,7 @@ $mobile-s-above: 481px;
     @content;
   }
 }
-// for hover/active
+
 @mixin hover {
   @media (hover: hover) {
     &:hover {

@@ -42,6 +42,11 @@
     flex-grow: 1;
   }
 }
+.message-fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 .visually-hidden {
   @include visually-hidden;
 }
@@ -57,10 +62,3 @@
     display: none !important;
   }
 }
-// .lock-body {
-//   overflow: hidden;
-// }
-// .hide-layer {
-//   position: relative;
-//   z-index: -1;
-// }

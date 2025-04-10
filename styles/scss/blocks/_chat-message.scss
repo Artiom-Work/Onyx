@@ -1,8 +1,15 @@
 .chat-message {
   &--user {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
     .chat-message__controls,
     .chat-message__wrapper {
       justify-content: end;
+    }
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   &--bot {
@@ -40,6 +47,8 @@
     }
 
     &-icon {
+      position: relative;
+      z-index: -1;
       @include mobile-media {
         width: 25px;
         height: 25px;

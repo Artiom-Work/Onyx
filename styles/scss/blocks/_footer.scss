@@ -1,6 +1,9 @@
 .footer {
   padding-block: 18px 80px;
 
+  @include mobile-media {
+    padding-block: 40px;
+  }
   &__text {
     @include fluid-text(14, 12);
 
@@ -8,5 +11,21 @@
     color: var(--color-dark-alternate);
     text-align: center;
     line-height: 1.27;
+    p {
+      margin-bottom: 0;
+      @include tablet-media {
+        &:not(:last-child) {
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+  &__link {
+    @include hover {
+      color: var(--color-light);
+    }
+    @include active {
+      scale: 0.95;
+    }
   }
 }

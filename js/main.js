@@ -1,11 +1,31 @@
 'use strict';
+// ==================== Global variables ====================
 const blockUserSelectChat = document.querySelector('.user-field__button-select-wrapper');
 const userSelectChatButton = document.querySelector('.user-field__select');
-
+const chatForm = document.getElementById('user-field');
+const messageInput = document.getElementById('message');
+const userChatSelect = document.getElementById('user-chat-selection');
+const messageList = document.querySelector('.chat-body__message-list');
+const initialBotMessageText = "Добрый день. Чем я могу вам помочь?";
+const ALL_MESSAGES_KEY = 'messages';
 let clickSelectCounter = 0;
+// ==================== EventListeners ====================
+userSelectChatButton.addEventListener('focus', handleSelectFocus);
+userSelectChatButton.addEventListener('blur', handleSelectBlur);
+blockUserSelectChat.addEventListener('click', handleSelectClick);
+chatForm.addEventListener('submit', handleFormSubmit);
+window.addEventListener('load', initializeChat);
+messageList.addEventListener('click', handleMessageListClick);
+messageInput.addEventListener('keydown', handleMessageInputKeydown);
 
-//for block chats
-
+document.addEventListener('DOMContentLoaded', function () {
+	const select = document.querySelector('.user-field__select');
+	const buttonTextSpan = document.querySelector('.user-field__button-text');
+	select.addEventListener('change', function () {
+		buttonTextSpan.textContent = this.options[this.selectedIndex].textContent;
+	});
+});
+// ==================== Swiper ====================
 const swiper = new Swiper('.swiper', {
 	direction: 'vertical',
 	slidesPerView: 1,
@@ -13,12 +33,10 @@ const swiper = new Swiper('.swiper', {
 	centeredSlides: false,
 	loop: true,
 	grabCursor: true,
-
 	navigation: {
 		nextEl: '.swiper-button-next',
 		prevEl: '.swiper-button-prev',
 	},
-
 	breakpoints: {
 		0: {
 			direction: 'vertical'
@@ -29,21 +47,21 @@ const swiper = new Swiper('.swiper', {
 		}
 	}
 });
-
-// for select chat button in block user-field 
-
-userSelectChatButton.addEventListener('focus', function (e) {
+// ==================== Functions for working with select ====================
+function handleSelectFocus(e) {
 	if (e) {
 		blockUserSelectChat.querySelector('.decor-triangle').classList.add('decor-triangle--rotate');
 	}
-});
-userSelectChatButton.addEventListener('blur', function (e) {
+}
+
+function handleSelectBlur(e) {
 	if (e) {
 		blockUserSelectChat.querySelector('.decor-triangle').classList.remove('decor-triangle--rotate');
 		clickSelectCounter = 0;
 	}
-});
-blockUserSelectChat.addEventListener('click', function (e) {
+}
+
+function handleSelectClick(e) {
 	clickSelectCounter = clickSelectCounter + 1;
 	if (clickSelectCounter > 1) {
 		blockUserSelectChat.querySelector('.decor-triangle').classList.remove('decor-triangle--rotate');
@@ -51,94 +69,8 @@ blockUserSelectChat.addEventListener('click', function (e) {
 	} else {
 		blockUserSelectChat.querySelector('.decor-triangle').classList.add('decor-triangle--rotate');
 	}
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-	const select = document.querySelector('.user-field__select')
-	const buttonTextSpan = document.querySelector('.user-field__button-text')
-
-	select.addEventListener('change', function () {
-		const selectedOption = this.options[this.selectedIndex]
-		buttonTextSpan.textContent = selectedOption.textContent
-	})
-})
-
-//============
-// Версия с анимацией плавной печати для сообщений бота
-const chatForm = document.getElementById('user-field');
-const messageInput = document.getElementById('message');
-const userChatSelect = document.getElementById('user-chat-selection');
-const messageList = document.querySelector('.chat-body__message-list');
-const initialBotMessageText = "Добрый день. Чем я могу вам помочь ?";
-
-const BOT_MESSAGES_KEY = 'botMessages';
-const ALL_MESSAGES_KEY = 'messages';
-
-chatForm.addEventListener('submit', handleFormSubmit);
-window.addEventListener('load', initializeChat);
-
-// ============================================================================
-// =========================  Functions  =======================================
-// ============================================================================
-
-function createBotMessage(messageText, index) {
-	return `
-		<li class="chat-body__message-item chat-message chat-message--bot" data-message-index="${index}">
-			<div class="chat-message__controls">
-				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-					</svg>
-					<span class="visually-hidden">Копировать сообщение</span>
-				</button>
-				<button class="chat-message__controls-button repeat-message-button" type="button" title="Повторить сообщение">
-					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-					</svg>
-					<span class="visually-hidden">Повторить сообщение</span>
-				</button>
-			</div>
-			<article class="chat-message__wrapper">
-				<img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg" alt="Икнока волшебника" width="39" height="44" loading="lazy">
-				<div class="chat-message__text">
-					<p class="bot-message-text"></p>
-				</div>
-			</article>
-		</li>
-	`;
 }
-
-function createUserMessage(messageText, index) {
-	return `
-		<li class="chat-body__message-item chat-message chat-message--user" data-message-index="${index}">
-			<div class="chat-message__controls">
-				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-					</svg>
-					<span class="visually-hidden">Копировать сообщение</span>
-				</button>
-				<button class="chat-message__controls-button repeat-message-button" type="button" title="Повторить сообщение">
-					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-					</svg>
-					<span class="visually-hidden">Повторить сообщение</span>
-				</button>
-			</div>
-			<article class="chat-message__wrapper">
-				<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32" height="32" loading="lazy">
-				<div class="chat-message__text">
-					<p>${messageText}</p>
-				</div>
-			</article>
-		</li>
-	`;
-}
-
-function addMessageToList(messageHTML) {
-	messageList.insertAdjacentHTML('beforeend', messageHTML);
-}
-
+// =================== Functions for working with messages ====================
 function getSelectData() {
 	return {
 		name: userChatSelect.name,
@@ -147,8 +79,80 @@ function getSelectData() {
 	};
 }
 
-function saveMessageToLocalStorage(messageData) {
-	let messages = JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
+function createBotMessage(messageText, index) {
+	return `
+        <li class="chat-body__message-item chat-message chat-message--bot" data-message-index="${index}">
+            <h3 class="visually-hidden">Сообщение с ответом ONYXbot чата</h3>
+            <div class="chat-message__controls">
+                <button class="chat-message__controls-button" type="button" title="Копировать сообщение">
+                    <svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
+                        <use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
+                    </svg>
+                </button>
+                <button class="chat-message__controls-button repeat-message-button" type="button" title="Повторить сообщение">
+                    <svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
+                    </svg>
+                </button>
+            </div>
+            <article class="chat-message__wrapper">
+                <h4 class="visually-hidden">Текст сообщения с товетом ONYXbot чата</h4>
+                <img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg" alt="Бот" width="39" height="44">
+                <div class="chat-message__text">
+                    <p class="bot-message-text"></p>
+                </div>
+            </article>
+        </li>
+    `;
+}
+
+function createUserMessage(messageText, index) {
+	return `
+        <li class="chat-body__message-item chat-message chat-message--user" data-message-index="${index}">
+            <h4 class="visually-hidden">Вопроса пользователя к ONYXbot чату</h4>
+            <div class="chat-message__controls">
+                <button class="chat-message__controls-button" type="button" title="Копировать сообщение">
+                    <svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
+                        <use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
+                    </svg>
+                </button>
+                <button class="chat-message__controls-button repeat-message-button" type="button" title="Повторить сообщение">
+                    <svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
+                    </svg>
+                </button>
+            </div>
+            <article class="chat-message__wrapper">
+                <h4 class="visually-hidden">Текст вопроса пользователя к ONYXbot чату</h4>
+                <img class="chat-message__image" src="./images/icons/user.svg" alt="Пользователь" width="32" height="32">
+                <div class="chat-message__text">
+                    <p>${messageText}</p>
+                </div>
+            </article>
+        </li>
+    `;
+}
+
+function addMessageToList(messageHTML) {
+	messageList.insertAdjacentHTML('beforeend', messageHTML);
+	const newMessage = messageList.lastElementChild;
+
+	if (newMessage.classList.contains('chat-message--user')) {
+		setTimeout(() => {
+			newMessage.classList.add('visible');
+		}, 10);
+	}
+
+	return newMessage;
+}
+
+function saveMessageToLocalStorage(messageData, selectData = null) {
+	const messages = JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
+
+	if (messageData.type === 'user' && selectData) {
+		messageData.selectedOption = selectData;
+	}
+
 	messages.push(messageData);
 	localStorage.setItem(ALL_MESSAGES_KEY, JSON.stringify(messages));
 }
@@ -157,100 +161,174 @@ function getMessagesFromLocalStorage() {
 	return JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
 }
 
-function displayAllMessages() {
-	messageList.innerHTML = '';
-	let allMessages = getMessagesFromLocalStorage();
-
-	allMessages.forEach((messageData, index) => {
-		let messageHTML = '';
-		if (messageData.type === 'bot') {
-			messageHTML = createBotMessage(messageData.message, index);
-			addMessageToList(messageHTML);
-			animateBotMessage(messageList.lastElementChild, messageData.message);
-		} else {
-			messageHTML = createUserMessage(messageData.message, index);
-			addMessageToList(messageHTML);
-		}
-	});
-}
-
-function createAndDisplayFirstBotMessage() {
-	let allMessages = getMessagesFromLocalStorage();
-	if (allMessages.length === 0) {
-		const botMessageData = {
-			type: 'bot',
-			message: initialBotMessageText
-		};
-		saveMessageToLocalStorage(botMessageData);
-		const messageHTML = createBotMessage(initialBotMessageText, 0);
-		addMessageToList(messageHTML);
-		animateBotMessage(messageList.lastElementChild, initialBotMessageText);
-	}
-}
-
 function handleFormSubmit(event) {
 	event.preventDefault();
+	const messageText = messageInput.value.trim();
 
-	const messageText = messageInput.value;
+	if (!messageText) return;
 
-	if (messageText.trim() !== "") {
+	const allMessages = getMessagesFromLocalStorage();
+	const selectData = getSelectData();
 
-		// Сохраняем сообщение пользователя
-		const userMessageData = {
-			type: 'user',
-			message: messageText,
-		};
-		saveMessageToLocalStorage(userMessageData);
+	const userMessageData = { type: 'user', message: messageText };
+	saveMessageToLocalStorage(userMessageData, selectData);
 
-		let messageHTML = createUserMessage(messageText, 0);
-		addMessageToList(messageHTML);
+	messageInput.classList.add('message-fade-out');
+	const userMessageHTML = createUserMessage(messageText, allMessages.length);
+	addMessageToList(userMessageHTML);
 
-		const selectData = getSelectData();
-
-		// Создаем и сохраняем ответ бота
+	setTimeout(() => {
 		const botResponseText = `Извините, не могу ответить на ваш вопрос с помощью ${selectData.text}, ожидается настройка приложения...`;
-		const botMessageData = {
-			type: 'bot',
-			message: botResponseText
-		};
+		const botMessageData = { type: 'bot', message: botResponseText };
 		saveMessageToLocalStorage(botMessageData);
 
-		messageHTML = createBotMessage(botResponseText, 0);
-		addMessageToList(messageHTML);
+		const botMessageHTML = createBotMessage(botResponseText, allMessages.length + 1);
+		const botMessageElement = addMessageToList(botMessageHTML);
 
-		// Запускаем анимацию печати
-		animateBotMessage(messageList.lastElementChild, botResponseText);
+		const textElement = botMessageElement.querySelector('.bot-message-text');
+		textElement.textContent = '';
+		animateBotMessage(textElement, botResponseText);
 
 		messageInput.value = '';
-	} else {
-		console.log('Сообщение пустое, ничего не сохраняется.');
-	}
+		messageInput.classList.remove('message-fade-out');
+
+		scrollToBottom();
+	}, 500);
 }
 
-// ============================================================================
-// ==================  Typing animation  ======================================
-// ============================================================================
-
-function animateBotMessage(messageElement, messageText) {
-	const textElement = messageElement.querySelector('.bot-message-text');
-	textElement.textContent = '';
+function animateBotMessage(textElement, messageText) {
 	let i = 0;
 	const intervalId = setInterval(() => {
-		textElement.textContent += messageText.charAt(i);
-		i++;
-		if (i > messageText.length - 1) {
+		if (i < messageText.length) {
+			textElement.textContent += messageText.charAt(i);
+			i++;
+		} else {
 			clearInterval(intervalId);
 		}
 	}, 20);
 }
 
-// ============================================================================
-// ================== Initialize Chat Function ===============================
-// ============================================================================
+function displayAllMessages() {
+	messageList.innerHTML = '';
+	const allMessages = getMessagesFromLocalStorage();
+
+	allMessages.forEach((messageData, index) => {
+		const messageHTML = messageData.type === 'bot'
+			? createBotMessage(messageData.message, index)
+			: createUserMessage(messageData.message, index);
+
+		const messageElement = addMessageToList(messageHTML);
+
+		if (messageData.type === 'bot') {
+			const textElement = messageElement.querySelector('.bot-message-text');
+			textElement.textContent = messageData.message;
+		}
+	});
+
+	scrollToBottom();
+}
 
 function initializeChat() {
+	localStorage.clear();
 	displayAllMessages();
-	createAndDisplayFirstBotMessage();
+
+	const allMessages = getMessagesFromLocalStorage();
+	if (allMessages.length === 0) {
+		const botMessageData = { type: 'bot', message: initialBotMessageText };
+		saveMessageToLocalStorage(botMessageData);
+
+		const botMessageHTML = createBotMessage(initialBotMessageText, 0);
+		const botMessageElement = addMessageToList(botMessageHTML);
+
+		const textElement = botMessageElement.querySelector('.bot-message-text');
+		textElement.textContent = '';
+		animateBotMessage(textElement, initialBotMessageText);
+	}
+}
+
+function scrollToBottom() {
+	messageList.scrollTop = messageList.scrollHeight;
+}
+
+function handleMessageListClick(event) {
+	const repeatButton = event.target.closest('.repeat-message-button');
+	if (repeatButton) {
+		const messageItem = repeatButton.closest('.chat-body__message-item');
+		const messageIndex = parseInt(messageItem.dataset.messageIndex);
+		const allMessages = getMessagesFromLocalStorage();
+		const messageToRepeat = allMessages[messageIndex];
+
+		if (!messageToRepeat) return;
+
+		if (messageToRepeat.type === 'user') {
+			messageInput.value = messageToRepeat.message;
+
+			if (messageToRepeat.selectedOption) {
+				const options = userChatSelect.options;
+				for (let i = 0; i < options.length; i++) {
+					if (options[i].value === messageToRepeat.selectedOption.value) {
+						userChatSelect.selectedIndex = i;
+						document.querySelector('.user-field__button-text').textContent =
+							messageToRepeat.selectedOption.text;
+						break;
+					}
+				}
+			}
+
+			chatForm.dispatchEvent(new Event('submit'));
+		} else {
+			const botResponseText = messageToRepeat.message;
+			const newIndex = allMessages.length;
+
+			const botMessageHTML = createBotMessage(botResponseText, newIndex);
+			const botMessageElement = addMessageToList(botMessageHTML);
+
+			const textElement = botMessageElement.querySelector('.bot-message-text');
+			textElement.textContent = '';
+			animateBotMessage(textElement, botResponseText);
+
+			scrollToBottom();
+
+			const botMessageData = {
+				type: 'bot',
+				message: botResponseText
+			};
+			saveMessageToLocalStorage(botMessageData);
+		}
+	}
+
+	const copyButton = event.target.closest('.chat-message__controls-button:not(.repeat-message-button)');
+	if (copyButton) {
+		const messageItem = copyButton.closest('.chat-body__message-item');
+		const messageText = messageItem.querySelector('.chat-message__text p').textContent;
+
+		navigator.clipboard.writeText(messageText)
+			.then(() => {
+				copyButton.classList.add('copied-effect');
+				setTimeout(() => copyButton.classList.remove('copied-effect'), 300);
+			})
+			.catch(err => {
+				console.error('Ошибка копирования:', err);
+				const textarea = document.createElement('textarea');
+				textarea.value = messageText;
+				document.body.appendChild(textarea);
+				textarea.select();
+				document.execCommand('copy');
+				document.body.removeChild(textarea);
+			});
+	}
+}
+
+function handleMessageInputKeydown(event) {
+	if (event.key === 'Enter') {
+		if (!event.shiftKey) {
+			event.preventDefault();
+
+			if (messageInput.value.trim() !== '') {
+				chatForm.dispatchEvent(new Event('submit'));
+			}
+		}
+	}
 }
 
 
@@ -264,619 +342,231 @@ function initializeChat() {
 
 
 
+//================ Для разработчиков =================
 
 
+// ЧАТ-ИНТЕРФЕЙС: ОСНОВНАЯ ЛОГИКА
+//
+// Принцип работы:
+// 1. Инициализация:
+//  - Создается слайдер чатов (Swiper)
+//  - Загружается история сообщений из localStorage
+//  - Если история пуста - бот отправляет приветствие
+//
+// 2. Взаимодействие:
+//  - Select с анимацией вращения треугольника
+//  - Отправка сообщений по Enter/кнопке
+//  - Автосохранение в localStorage
+//  - Имитация ответа бота с анимацией печати
+//
+// 3. Особенности:
+//  - Все сообщения хранятся ТОЛЬКО ДО ПЕРЕЗАГРУЗКИ
+//  (т.к. initializeChat очищает localStorage)
+//
+// Рекомендации по доработке:
+// 1. Для сохранения истории между сессиями:
+//  - Убрать localStorage.clear() в initializeChat()
+//  - Реализовать очистку по дате/времени
+//
+// 2. Для реальной интеграции с AI:
+//  - Заменить заглушку в handleFormSubmit()
+//  - Добавить обработку ошибок API
 
 
+//------------------==== Функции ===--------------------------
+// handleSelectFocus(e)
+// Обрабатывает фокус на элементе выбора чата. Добавляет класс для поворота треугольного декоратора.
 
+// handleSelectBlur(e)
+// Обрабатывает потерю фокуса элемента выбора чата. Убирает класс поворота и сбрасывает счетчик кликов.
 
+// handleSelectClick(e)
+// Управляет кликами по блоку выбора чата. Переключает состояние треугольного декоратора.
 
+// getSelectData()
+// Возвращает объект с данными выбранного чата: имя, значение и текст опции.
 
+// createBotMessage(messageText, index)
+// Генерирует HTML-шаблон сообщения от бота с указанным текстом и индексом.
 
+// createUserMessage(messageText, index)
+// Создает HTML-шаблон сообщения пользователя с текстом и индексом.
 
+// addMessageToList(messageHTML)
+// Добавляет сообщение в список чата и возвращает созданный элемент.
 
+// saveMessageToLocalStorage(messageData, selectData)
+// Сохраняет сообщение в localStorage с возможностью прикрепления данных выбора чата.
 
+// getMessagesFromLocalStorage()
+// Извлекает все сообщения из localStorage или возвращает пустой массив.
 
+// handleFormSubmit(event)
+// Обрабатывает отправку формы: сохраняет сообщение, показывает его, генерирует ответ бота.
 
+// animateBotMessage(textElement, messageText)
+// Анимирует появление текста сообщения бота посимвольно.
 
+// displayAllMessages()
+// Отображает все сообщения из localStorage в чате.
 
+// initializeChat()
+// Инициализирует чат: очищает хранилище и показывает приветственное сообщение.
 
+// scrollToBottom()
+// Прокручивает список сообщений до последнего элемента.
 
+// handleMessageListClick(event)
+// Обрабатывает клики в списке сообщений: повтор и копирование.
 
+// handleMessageInputKeydown(event)
+// Управляет вводом с клавиатуры: отправка по Enter без Shift.
 
+// Swiper инициализация
+// Настраивает слайдер чатов с адаптивным поведением (вертикальный/горизонтальный).
 
 
+//------------------==== Обработчики событий ===--------------------------
 
+//********** Обработчики элементов интерфейса:***********
+// 1.1. userSelectChatButton.addEventListener('focus', handleSelectFocus)
 
 
+// Срабатывает при фокусировке на select-элементе выбора чата
 
+// Визуально поворачивает треугольник-индикатор (добавляет класс decor-triangle--rotate)
 
-// Версия с анимацией плавной печати для сообщений бота
-// const chatForm = document.getElementById('user-field');
-// const messageInput = document.getElementById('message');
-// const userChatSelect = document.getElementById('user-chat-selection');
-// const messageList = document.querySelector('.chat-body__message-list');
-// const initialBotMessageText = "Добрый день. Чем я могу вам помочь ?";
+// 1.2. userSelectChatButton.addEventListener('blur', handleSelectBlur)
 
-// const BOT_MESSAGES_KEY = 'botMessages';
-// const ALL_MESSAGES_KEY = 'messages';
 
-// chatForm.addEventListener('submit', handleFormSubmit);
-// window.addEventListener('load', initializeChat);
+// Активируется при потере фокуса select-элементом
 
-// // ============================================================================
-// // =========================  Functions  =======================================
-// // ============================================================================
+// Возвращает треугольник-индикатор в исходное состояние
 
-// function createBotMessage(messageText, index) {
-// 	return `
-// 		<li class="chat-body__message-item chat-message chat-message--bot" data-message-index="${index}">
-// 			<div class="chat-message__controls">
-// 				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Копировать сообщение</span>
-// 				</button>
-// 				<button class="chat-message__controls-button repeat-message-button" type="button" title="Повторить сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Повторить сообщение</span>
-// 				</button>
-// 			</div>
-// 			<article class="chat-message__wrapper">
-// 				<img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg" alt="Икнока волшебника" width="39" height="44" loading="lazy">
-// 				<div class="chat-message__text">
-// 					<p class="bot-message-text"></p>
-// 				</div>
-// 			</article>
-// 		</li>
-// 	`;
-// }
+// Сбрасывает счетчик кликов (clickSelectCounter = 0)
 
-// function createUserMessage(messageText, index) {
-// 	return `
-// 		<li class="chat-body__message-item chat-message chat-message--user" data-message-index="${index}">
-// 			<div class="chat-message__controls">
-// 				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Копировать сообщение</span>
-// 				</button>
-// 				<button class="chat-message__controls-button repeat-message-button" type="button" title="Повторить сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Повторить сообщение</span>
-// 				</button>
-// 			</div>
-// 			<article class="chat-message__wrapper">
-// 				<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32" height="32" loading="lazy">
-// 				<div class="chat-message__text">
-// 					<p>${messageText}</p>
-// 				</div>
-// 			</article>
-// 		</li>
-// 	`;
-// }
+// 1.3. blockUserSelectChat.addEventListener('click', handleSelectClick)
 
-// function addMessageToList(messageHTML) {
-// 	messageList.insertAdjacentHTML('beforeend', messageHTML);
-// }
-
-// function getSelectData() {
-// 	return {
-// 		name: userChatSelect.name,
-// 		value: userChatSelect.value,
-// 		text: userChatSelect.options[userChatSelect.selectedIndex].text
-// 	};
-// }
-
-// function saveMessageToLocalStorage(messageData) {
-// 	let messages = JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
-// 	messages.push(messageData);
-// 	localStorage.setItem(ALL_MESSAGES_KEY, JSON.stringify(messages));
-// }
-
-// function getMessagesFromLocalStorage() {
-// 	return JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
-// }
-
-// function displayAllMessages() {
-// 	messageList.innerHTML = '';
-// 	let allMessages = getMessagesFromLocalStorage();
-
-// 	allMessages.forEach((messageData, index) => {
-// 		let messageHTML = '';
-// 		if (messageData.type === 'bot') {
-// 			messageHTML = createBotMessage(messageData.message, index);
-// 			addMessageToList(messageHTML);
-// 			animateBotMessage(messageList.lastElementChild, messageData.message);
-// 		} else {
-// 			messageHTML = createUserMessage(messageData.message, index);
-// 			addMessageToList(messageHTML);
-// 		}
-// 	});
-// }
-
-// function createAndDisplayFirstBotMessage() {
-// 	let allMessages = getMessagesFromLocalStorage();
-// 	if (allMessages.length === 0) {
-// 		const botMessageData = {
-// 			type: 'bot',
-// 			message: initialBotMessageText
-// 		};
-// 		saveMessageToLocalStorage(botMessageData);
-// 		const messageHTML = createBotMessage(initialBotMessageText, 0);
-// 		addMessageToList(messageHTML);
-// 		animateBotMessage(messageList.lastElementChild, initialBotMessageText);
-// 	}
-// }
-
-// function handleFormSubmit(event) {
-// 	event.preventDefault();
-
-// 	const messageText = messageInput.value;
-
-// 	if (messageText.trim() !== "") {
-
-// 		// Сохраняем сообщение пользователя
-// 		const userMessageData = {
-// 			type: 'user',
-// 			message: messageText,
-// 		};
-// 		saveMessageToLocalStorage(userMessageData);
-
-// 		let messageHTML = createUserMessage(messageText, 0);
-// 		addMessageToList(messageHTML);
-
-// 		const selectData = getSelectData();
-
-// 		// Создаем и сохраняем ответ бота
-// 		const botResponseText = `Извините, не могу ответить на ваш вопрос с помощью ${selectData.text}, ожидается настройка приложения...`;
-// 		const botMessageData = {
-// 			type: 'bot',
-// 			message: botResponseText
-// 		};
-// 		saveMessageToLocalStorage(botMessageData);
-
-// 		messageHTML = createBotMessage(botResponseText, 0);
-// 		addMessageToList(messageHTML);
-
-// 		// Запускаем анимацию печати
-// 		animateBotMessage(messageList.lastElementChild, botResponseText);
-
-// 		messageInput.value = '';
-// 	} else {
-// 		console.log('Сообщение пустое, ничего не сохраняется.');
-// 	}
-// }
-
-// // ============================================================================
-// // ==================  Typing animation  ======================================
-// // ============================================================================
-
-// function animateBotMessage(messageElement, messageText) {
-// 	const textElement = messageElement.querySelector('.bot-message-text');
-// 	textElement.textContent = '';
-// 	let i = 0;
-// 	const intervalId = setInterval(() => {
-// 		textElement.textContent += messageText.charAt(i);
-// 		i++;
-// 		if (i > messageText.length - 1) {
-// 			clearInterval(intervalId);
-// 		}
-// 	}, 20);
-// }
-
-// // ============================================================================
-// // ================== Initialize Chat Function ===============================
-// // ============================================================================
-
-// function initializeChat() {
-// 	displayAllMessages();
-// 	createAndDisplayFirstBotMessage();
-// }
-
-
-
-
-
-
-
-
-// Версия с ответами бота на сообщения пользователя
-// const chatForm = document.getElementById('user-field');
-// const messageInput = document.getElementById('message');
-// const userChatSelect = document.getElementById('user-chat-selection');
-// const messageList = document.querySelector('.chat-body__message-list');
-// const initialBotMessageText = "Добрый день. Чем я могу вам помочь ?";
-
-// const BOT_MESSAGES_KEY = 'botMessages';
-// const ALL_MESSAGES_KEY = 'messages';
-
-// chatForm.addEventListener('submit', handleFormSubmit);
-// window.addEventListener('load', displayAllMessages);
-
-// function createBotMessage(messageText, index) {
-// 	return `
-// 		<li class="chat-body__message-item chat-message chat-message--bot" data-message-index="${index}">
-// 			<div class="chat-message__controls">
-// 				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Копировать сообщение</span>
-// 				</button>
-// 				<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Повторить сообщение</span>
-// 				</button>
-// 			</div>
-// 			<article class="chat-message__wrapper">
-// 				<img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg" alt="Икнока волшебника" width="39" height="44" loading="lazy">
-// 				<div class="chat-message__text">
-// 					<p>${messageText}</p>
-// 				</div>
-// 			</article>
-// 		</li>
-// 	`;
-// }
-
-// function createUserMessage(messageText, index) {
-// 	return `
-// 		<li class="chat-body__message-item chat-message chat-message--user" data-message-index="${index}">
-// 			<div class="chat-message__controls">
-// 				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Копировать сообщение</span>
-// 				</button>
-// 				<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Повторить сообщение</span>
-// 				</button>
-// 			</div>
-// 			<article class="chat-message__wrapper">
-// 				<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32" height="32" loading="lazy">
-// 				<div class="chat-message__text">
-// 					<p>${messageText}</p>
-// 				</div>
-// 			</article>
-// 		</li>
-// 	`;
-// }
-
-// function addMessageToList(messageHTML) {
-// 	messageList.insertAdjacentHTML('beforeend', messageHTML);
-// }
-
-// function saveBotMessageToLocalStorage(messageText) {
-// 	let messages = JSON.parse(localStorage.getItem(BOT_MESSAGES_KEY)) || [];
-// 	messages.push(messageText);
-// 	localStorage.setItem(BOT_MESSAGES_KEY, JSON.stringify(messages));
-// 	return messages.length - 1;
-// }
-
-// function getSelectData() {
-// 	return {
-// 		name: userChatSelect.name,
-// 		value: userChatSelect.value,
-// 		text: userChatSelect.options[userChatSelect.selectedIndex].text
-// 	};
-// }
-
-// function saveMessageToLocalStorage(messageData) {
-// 	let messages = JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
-// 	messages.push(messageData);
-// 	localStorage.setItem(ALL_MESSAGES_KEY, JSON.stringify(messages));
-// }
-
-// function getMessagesFromLocalStorage() {
-// 	return JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
-// }
-
-// function displayAllMessages() {
-// 	let messages = getMessagesFromLocalStorage();
-// 	messageList.innerHTML = '';
-
-// 	// Отображаем сообщения из localStorage
-// 	messages.forEach((messageData, index) => {
-// 		let messageHTML = '';
-// 		if (messageData.type === 'bot') {
-// 			messageHTML = createBotMessage(messageData.message, index);
-// 		} else {
-// 			messageHTML = createUserMessage(messageData.message, index);
-// 		}
-// 		addMessageToList(messageHTML);
-// 	});
-
-// 	// Если нет сообщений пользователя, отображаем первое сообщение бота
-// 	if (messages.length === 0) {
-// 		createAndDisplayFirstBotMessage();
-// 	}
-// }
-
-// function createAndDisplayFirstBotMessage() {
-// 	let messages = JSON.parse(localStorage.getItem(BOT_MESSAGES_KEY)) || [];
-// 	if (messages.length === 0) {
-// 		const messageIndex = saveBotMessageToLocalStorage(initialBotMessageText);
-// 		const messageHTML = createBotMessage(initialBotMessageText, messageIndex);
-// 		addMessageToList(messageHTML);
-// 	}
-// }
-
-// function handleFormSubmit(event) {
-// 	event.preventDefault();
-
-// 	const messageText = messageInput.value;
-
-// 	if (messageText.trim() !== "") {
-// 		const selectData = getSelectData();
-
-// 		// Сохраняем сообщение пользователя
-// 		const messageData = {
-// 			type: 'user',
-// 			message: messageText,
-// 			select: selectData
-// 		};
-// 		saveMessageToLocalStorage(messageData);
-// 		const messageIndex = getMessagesFromLocalStorage().length - 1;
-// 		const messageHTML = createUserMessage(messageText, messageIndex);
-// 		addMessageToList(messageHTML);
-
-// 		// Создаем и сохраняем ответ бота
-// 		const botResponseText = `Извините, не могу ответить на ваш вопрос с помощью ${selectData.text}, ожидается настройка приложения...`;
-// 		const botMessageData = {
-// 			type: 'bot',
-// 			message: botResponseText
-// 		};
-// 		saveMessageToLocalStorage(botMessageData);
-// 		const botMessageIndex = getMessagesFromLocalStorage().length - 1;
-// 		const botMessageHTML = createBotMessage(botResponseText, botMessageIndex);
-// 		addMessageToList(botMessageHTML);
-
-// 		messageInput.value = '';
-// 	} else {
-// 		console.log('Сообщение пустое, ничего не сохраняется.');
-// 	}
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ============Первое сообщение бота + отображение сообщения пользователя
-// const chatForm = document.getElementById('user-field');
-// const messageInput = document.getElementById('message');
-// const userChatSelect = document.getElementById('user-chat-selection');
-// const messageList = document.querySelector('.chat-body__message-list');
-// const initialBotMessageText = "Добрый день. Чем я могу вам помочь ?";
-// const BOT_MESSAGES_KEY = 'botMessages';
-// const ALL_MESSAGES_KEY = 'messages';
-
-// chatForm.addEventListener('submit', handleFormSubmit);
-// window.addEventListener('load', createAndDisplayFirstBotMessage);
-
-// // Функция для создания сообщения бота
-// function createBotMessage(messageText, index) {
-// 	return `
-// 		<li class="chat-body__message-item chat-message chat-message--bot" data-message-index="${index}">
-// 			<div class="chat-message__controls">
-// 				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Копировать сообщение</span>
-// 				</button>
-// 				<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Повторить сообщение</span>
-// 				</button>
-// 			</div>
-// 			<article class="chat-message__wrapper">
-// 				<img class="chat-message__image chat-message__image--bot" src="./images/icons/head.svg" alt="Икнока волшебника" width="39" height="44" loading="lazy">
-// 				<div class="chat-message__text">
-// 					<p>${messageText}</p>
-// 				</div>
-// 			</article>
-// 		</li>
-// 	`;
-// }
-
-// // Функция для создания сообщения пользователя
-// function createUserMessage(messageText, index) {
-// 	return `
-// 		<li class="chat-body__message-item chat-message chat-message--user" data-message-index="${index}">
-// 			<div class="chat-message__controls">
-// 				<button class="chat-message__controls-button" type="button" title="Копировать сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 32 32" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#copy"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Копировать сообщение</span>
-// 				</button>
-// 				<button class="chat-message__controls-button" type="button" title="Повторить сообщение">
-// 					<svg class="chat-message__controls-icon" viewBox="0 0 24 24" width="20" height="20">
-// 						<use xlink:href="./images/icons/sprite-icons.svg#refresh-message"></use>
-// 					</svg>
-// 					<span class="visually-hidden">Повторить сообщение</span>
-// 				</button>
-// 			</div>
-// 			<article class="chat-message__wrapper">
-// 				<img class="chat-message__image" src="./images/icons/user.svg" alt="Икнока пользователя" width="32" height="32" loading="lazy">
-// 				<div class="chat-message__text">
-// 					<p>${messageText}</p>
-// 				</div>
-// 			</article>
-// 		</li>
-// 	`;
-// }
-
-// // Функция для добавления сообщения в список на странице
-// function addMessageToList(messageHTML) {
-// 	messageList.insertAdjacentHTML('beforeend', messageHTML);
-// }
-
-// // Функция для сохранения сообщений в localStorage
-// function saveBotMessageToLocalStorage(messageText) {
-// 	let messages = JSON.parse(localStorage.getItem(BOT_MESSAGES_KEY)) || [];
-// 	messages.push(messageText);
-// 	localStorage.setItem(BOT_MESSAGES_KEY, JSON.stringify(messages));
-// 	return messages.length - 1; // Возвращаем индекс нового сообщения
-// }
-
-// // Функция для создания и отображения первого сообщения бота при загрузке страницы
-// function createAndDisplayFirstBotMessage() {
-// 	let messages = JSON.parse(localStorage.getItem(BOT_MESSAGES_KEY)) || [];
-// 	if (messages.length === 0) {
-// 		// Сохраняем сообщение в localStorage
-// 		const messageIndex = saveBotMessageToLocalStorage(initialBotMessageText);
-
-// 		// Создаем сообщение и добавляем его на страницу
-// 		const messageHTML = createBotMessage(initialBotMessageText, messageIndex);
-// 		addMessageToList(messageHTML);
-// 	} else {
-// 		// Если сообщения уже есть, можно загрузить только первое
-// 		const firstMessage = messages[0];
-// 		const messageHTML = createBotMessage(firstMessage, 0);
-// 		addMessageToList(messageHTML);
-// 	}
-// }
-
-// // Функция для получения данных из select
-// function getSelectData() {
-// 	return {
-// 		name: userChatSelect.name, // Атрибут name
-// 		value: userChatSelect.value, // Выбранное значение
-// 		text: userChatSelect.options[userChatSelect.selectedIndex].text // Выбранный текст
-// 	};
-// }
-
-// // Функция для сохранения сообщений в localStorage
-// function saveMessageToLocalStorage(messageData) {
-// 	let messages = getMessagesFromLocalStorage();
-// 	messages.push(messageData);
-// 	localStorage.setItem(ALL_MESSAGES_KEY, JSON.stringify(messages));
-// }
-
-// // Функция для получения сообщений из localStorage
-// function getMessagesFromLocalStorage() {
-// 	return JSON.parse(localStorage.getItem(ALL_MESSAGES_KEY)) || [];
-// }
-
-// // Функция для отображения сообщений из localStorage
-// function displayMessagesFromLocalStorage() {
-// 	const messages = getMessagesFromLocalStorage();
-// 	messages.forEach((messageData, index) => {
-// 		let messageHTML;
-// 		if (messageData.type === 'bot') {
-// 			messageHTML = createBotMessage(messageData.message, index);
-// 		} else {
-// 			messageHTML = createUserMessage(messageData.message, messageData.select, index);
-// 		}
-// 		addMessageToList(messageHTML);
-// 	});
-// }
-
-// // Функция для обработки отправки формы
-// function handleFormSubmit(event) {
-// 	event.preventDefault();
-
-// 	const messageText = messageInput.value;
-
-// 	if (messageText.trim() !== "") {
-// 		const selectData = getSelectData();
-
-// 		// Формируем объект с данными сообщения и select
-// 		const messageData = {
-// 			type: 'user',
-// 			message: messageText,
-// 			select: selectData
-// 		};
-
-// 		saveMessageToLocalStorage(messageData);
-// 		const messages = getMessagesFromLocalStorage();
-// 		const messageIndex = messages.length - 1;
-// 		const messageHTML = createUserMessage(messageText, selectData, messageIndex);
-// 		addMessageToList(messageHTML);
-// 		messageInput.value = '';
-// 	} else {
-// 		console.log('Сообщение пустое, ничего не сохраняется.');
-// 	}
-// }
-
-// // Загружаем сообщения из localStorage при загрузке страницы
-// displayMessagesFromLocalStorage();
-
-
-
-
-// ============Добавление сообщений + названия чата в селекте в локал стор
-// const chatForm = document.getElementById('user-field');
-// const messageInput = document.getElementById('message');
-// const userChatSelect = document.getElementById('user-chat-selection');
-
-// chatForm.addEventListener('submit', handleFormSubmit);
-
-// // Функция для получения данных из select
-// function getSelectData() {
-// 	return {
-// 		name: userChatSelect.name, // Атрибут name
-// 		value: userChatSelect.value, // Выбранное значение
-// 		text: userChatSelect.options[userChatSelect.selectedIndex].text // Выбранный текст
-// 	};
-// }
-
-// // Функция для сохранения сообщений в localStorage
-// function saveMessageToLocalStorage(messageData) {
-// 	let messages = getMessagesFromLocalStorage();
-// 	messages.push(messageData);
-// 	localStorage.setItem('messages', JSON.stringify(messages));
-// }
-
-// // Функция для обработки отправки формы
-// function handleFormSubmit(event) {
-// 	event.preventDefault();
-
-// 	const messageText = messageInput.value;
-
-// 	if (messageText.trim() !== "") {
-// 		const selectData = getSelectData();
-
-// 		// Формируем объект с данными сообщения и select
-// 		const messageData = {
-// 			message: messageText,
-// 			select: selectData
-// 		};
-
-// 		saveMessageToLocalStorage(messageData);
-// 		messageInput.value = ''; // Очищаем поле после сохранения
-// 	} else {
-// 		console.log('Сообщение пустое, ничего не сохраняется.');
-// 	}
-// }
-
-// // Функция для получения сообщений из localStorage
-// function getMessagesFromLocalStorage() {
-// 	return JSON.parse(localStorage.getItem('messages')) || [];
-// }
+
+// Обрабатывает клики по блоку выбора чата
+
+// Реализует toggle-логику для треугольного индикатора:
+
+// Первый клик - поворот
+
+// Второй клик - возврат в исходное положение
+
+// Сбрасывает счетчик после второго клика
+
+
+//********** Системные обработчики: ***********
+
+
+// 2.1. document.addEventListener('DOMContentLoaded', function)
+
+
+// Инициализирует привязку выбранного значения select к тексту кнопки
+
+// Обновляет текст кнопки при изменении выбора (change событие)
+
+// 2.2. window.addEventListener('load', initializeChat)
+
+
+// Запускает инициализацию чата после полной загрузки страницы
+
+// Восстанавливает историю сообщений из localStorage
+
+// Показывает приветственное сообщение бота для новых сессий
+
+
+//********** Обработчики формы чата: ***********
+
+
+// 3.1. chatForm.addEventListener('submit', handleFormSubmit)
+
+
+// Перехватывает отправку формы (preventDefault)
+
+// Валидирует введенный текст (не пустая строка)
+
+// Сохраняет сообщение пользователя в localStorage
+
+// Имитирует ответ бота с задержкой 500мс
+
+// Управляет анимациями (исчезновение поля ввода, появление сообщений)
+
+// 3.2. messageInput.addEventListener('keydown', handleMessageInputKeydown)
+
+
+// Обрабатывает нажатие Enter в поле ввода
+
+// Отправляет сообщение при нажатии Enter (без Shift)
+
+// Блокирует перенос строки при обычном Enter
+
+// Сохраняет возможность переноса при Shift+Enter
+
+
+//********** Обработчики сообщений: ***********
+
+
+// 4.1. messageList.addEventListener('click', handleMessageListClick)
+
+
+// Определяет тип действия по цели клика:
+
+// Кнопка повторения (repeat-message-button):
+
+// Для пользовательских сообщений: подставляет текст в поле ввода
+
+// Для сообщений бота: дублирует сообщение
+
+// Кнопка копирования (иконка копии):
+
+// Копирует текст сообщения в буфер обмена
+
+// Визуальный фидбек (эффект "copied-effect")
+
+// Fallback для старых браузеров (execCommand)
+
+// Особенности обработки событий:
+
+// Все обработчики используют делегирование событий
+
+// Учет состояния через data-атрибуты (data-message-index)
+
+// Поддержка touch-событий через стандартные click-обработчики
+
+
+
+
+
+//P.S. TELEGRAM -- @ArtiomMezheynikov
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
