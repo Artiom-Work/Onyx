@@ -6,6 +6,7 @@ const chatForm = document.getElementById('user-field');
 const messageInput = document.getElementById('message');
 const userChatSelect = document.getElementById('user-chat-selection');
 const messageList = document.querySelector('.chat-body__message-list');
+const decorTriangle = blockUserSelectChat.querySelector('.decor-triangle');
 const initialBotMessageText = "Добрый день. Чем я могу вам помочь?";
 const ALL_MESSAGES_KEY = 'messages';
 let clickSelectCounter = 0;
@@ -18,13 +19,14 @@ window.addEventListener('load', initializeChat);
 messageList.addEventListener('click', handleMessageListClick);
 messageInput.addEventListener('keydown', handleMessageInputKeydown);
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', (function () {
 	const select = document.querySelector('.user-field__select');
 	const buttonTextSpan = document.querySelector('.user-field__button-text');
+
 	select.addEventListener('change', function () {
 		buttonTextSpan.textContent = this.options[this.selectedIndex].textContent;
 	});
-});
+})());
 // ==================== Swiper ====================
 const swiper = new Swiper('.swiper', {
 	direction: 'vertical',

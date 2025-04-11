@@ -99,3 +99,7 @@ $\color{red}\text{Заказ из фриланс биржи}$
 💡
 💡
 💡
+
+Исходный вариант -> [**Git Pages**](https://artiom-work.github.io/Deepseek/)
+
+Исправленный вариант -> [**Git Pages**](https://artiom-work.github.io/Onyx/)
